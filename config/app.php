@@ -162,6 +162,7 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        AdvanceSearch\AdvanceSearchProvider\AdvanceSearchProvider::class,
 
         /*
          * Package Service Providers...
@@ -176,9 +177,9 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-            Collective\Html\HtmlServiceProvider::class,
-Barryvdh\Debugbar\ServiceProvider::class,
-    TCG\Voyager\VoyagerServiceProvider::class,
+        Collective\Html\HtmlServiceProvider::class,
+        Barryvdh\Debugbar\ServiceProvider::class,
+        TCG\Voyager\VoyagerServiceProvider::class,
 
 
 
@@ -196,8 +197,7 @@ Barryvdh\Debugbar\ServiceProvider::class,
     */
 
     'aliases' => [
-'Debugbar' => Barryvdh\Debugbar\Facade::class,
-
+        'Debugbar' => Barryvdh\Debugbar\Facade::class,
         'App' => Illuminate\Support\Facades\App::class,
         'Artisan' => Illuminate\Support\Facades\Artisan::class,
         'Auth' => Illuminate\Support\Facades\Auth::class,
@@ -231,12 +231,9 @@ Barryvdh\Debugbar\ServiceProvider::class,
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-            // ...
-      'Form' => Collective\Html\FormFacade::class,
-      'Html' => Collective\Html\HtmlFacade::class,
-    // ...
-
-
+        'Form' => Collective\Html\FormFacade::class,
+        'Html' => Collective\Html\HtmlFacade::class,
+        'Search' => AdvanceSearch\AdvanceSearchProvider\Facades\SearchFacades::class,
     ],
 
 ];

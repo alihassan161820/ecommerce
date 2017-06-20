@@ -78,7 +78,7 @@ Service
                       <img src="images/03.jpg" alt="img">
                     </div>
                     <div class="whychoose-singleslide">
-                      <img src="images/04.png" alt="img">
+                      <img src="images/06.png" alt="img">
                     </div>
                     <div class="whychoose-singleslide">
                       <img src="images/05.png" alt="img">

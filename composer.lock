@@ -4,8 +4,52 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "b6c9e74c132ef5cc04d4420f7e6c01fa",
+    "content-hash": "b06747adea6050a0ace192c8927fea7e",
     "packages": [
+        {
+            "name": "5dmatwebsearch/advancesearch",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zizohassan/full-text-search-laravel.git",
+                "reference": "3ec5f1242f9d75a3c1b7b4c2ffb595f69a6eb392"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/zizohassan/full-text-search-laravel/zipball/3ec5f1242f9d75a3c1b7b4c2ffb595f69a6eb392",
+                "reference": "3ec5f1242f9d75a3c1b7b4c2ffb595f69a6eb392",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "type": "package",
+            "autoload": {
+                "psr-4": {
+                    "AdvanceSearch\\AdvanceSearchProvider\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "5dmatweb Team",
+                    "email": "admin@5dmat-web.com",
+                    "homepage": "https://5dmat-web.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Fulltext Search for laravel ...",
+            "keywords": [
+                "full-text",
+                "laravel",
+                "php",
+                "search"
+            ],
+            "time": "2017-05-26 23:56:49"
+        },
         {
             "name": "arrilot/laravel-widgets",
             "version": "3.7.2",
@@ -4281,7 +4325,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "5dmatwebsearch/advancesearch": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

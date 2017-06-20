@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use App\Categorry;
+
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -13,7 +15,18 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+         view()->composer('website.index',function($view){
+                $view->with('categorries',Categorry::categories());
+         });
+
+         view()->composer('website.layouts.bottomHeader',function($view){
+                $view->with('categorries',Categorry::categories());
+         });
+         
+         view()->composer('website.layouts.bottomHeader',function($view){
+                $view->with('cities',config('constant.cities'));
+         });
+
     }
 
     /**
