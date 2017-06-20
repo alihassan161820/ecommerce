@@ -24,3 +24,21 @@ Route::group(['prefix' => 'admin'], function () {
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
+
+
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
+});
+
+Auth::routes();
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/home', 'HomeController@index');
+    Route::get('/profile', 'ProfileController@index');
+    Route::get('/editProfile','ProfileController@editProfileForm' );
+
+    Route::post('/updateProfile', 'ProfileController@updateProfile');
+    // Route::get('/profile/{slug}', 'ProfileController@index');
+    // Route::get('/changePhoto', function() {
+    //     return view('profile.pic');
+    });
+
