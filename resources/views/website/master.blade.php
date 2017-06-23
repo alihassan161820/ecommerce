@@ -22,13 +22,14 @@
         <!-- Main structure css file -->
 
      {!! Html::style('css/main.css') !!}
-          {!! Html::style('css/style.css') !!}
+     {!! Html::style('css/style.css') !!}
      {!! Html::style('css/prettyPhoto.css') !!}
      {!! Html::style('css/price-range.css') !!}
      {!! Html::style('css/animate.css') !!}
      {!! Html::style('css/responsive.css') !!}
      {!! Html::style('css/select2.css') !!}
-          {!! Html::style('css/cus.css') !!}
+     {!! Html::style('css/cus.css') !!}
+     
 
 
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

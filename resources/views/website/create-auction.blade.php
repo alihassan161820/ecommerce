@@ -1,23 +1,22 @@
 @extends('website.master')
 @section('title')
-Ads
+Home
 @endsection
 @section('container')
 
-		<section id="blogArchive">      
+	<section id="blogArchive">      
 		  <div class="row">
 			<div class="col-lg-12 col-md-12">
 			  <div class="blog-breadcrumbs-area">
 				<div class="container">
 				  <div class="blog-breadcrumbs-left">
-					<h2 class="head">Create Product</h2>
+					<h2 class="head">Create Auction</h2>
 				  </div>
 				  <div class="blog-breadcrumbs-right">
 					<ol class="breadcrumb">
 					  <li>You are here</li>
-					  <li class="active">Create Product</li>
+					  <li class="active">Create Auction</li>
 					  <li><a href="index.html">Home</a></li>                  
-					  
 					</ol>
 				  </div>
 				</div>
@@ -25,6 +24,9 @@ Ads
 			</div>        
 		  </div>      
 		</section> 
+	
+
+   
    <!-- Start Container Profile-->
    
 	<div class="container">
@@ -42,28 +44,39 @@ Ads
 					<div class=" col-md-12 col-lg-12 "> 
 						<form>
 							<table class="table table-user-information">
-								<tbody>
+								<tbody>	
+									
 
-								<tr>
-									<td>City</td>
-									<td> <input type="text"/> </td>
-								</tr>
+									<tr>
+										<td>City</td>
+										<td> <input type="text"/> </td>
+									</tr>
 
-								
 
-								<tr>
+									<tr>
 									<td>Phone Number</td>
 									<td> <input type="number"/> </td>
-								</tr>
+								  </tr>
+
 
 								  <tr>
 									<td>Item Name</td>
 									<td> <input type="text"/> </td>
 								  </tr>
-							    
+							   
 								 <tr>
-									<td> Price</td>
+									<td>Starting Price</td>
+									<td> <input type="number" min="0"/> </td>
+								 </tr>
+								 
+								 <tr>
+									<td>Buy Now Price</td>
 									<td><input type="number" min="0"/></td>
+								  </tr>
+								  
+								  <tr>
+									<td>Target Price</td>
+									<td><input type="number" min="0"/> </td>
 								  </tr>
 								  
 								  <tr>
@@ -79,6 +92,27 @@ Ads
 									</td>
 								  </tr>
 								  
+								  <tr>
+									<td>Start Time</td>
+									<td><input type="datetime-local" name="datetime"/></td>
+								  </tr>
+								  
+								  <tr>
+									<td>Period</td>
+										<td>
+											<ul class="nav navbar-nav navbar-right">
+												<select class="per-select">
+													<option>30 min </option>
+													<option>1 hour</option>
+													<option>2 hour </option>
+													<option>4 hour </option>
+													<option>6 hour </option>
+													<option>12 hour </option>
+													<option>24 hour </option>
+												</select> 
+											</ul> 								
+										</td>
+								  </tr>
 								
 								  <tr>
 									<td>Choose Picture</td>
@@ -94,8 +128,8 @@ Ads
 								  
 								</tbody>
 							</table>
-							<input type="submit" value="Create">
-							<input type="reset" value="Clear">
+							<button class="btn btn-primary"/>Create </button>
+							<button class="btn btn-primary"/>Clear </button>
 						</form>
 					</div>
 				  </div>
@@ -107,5 +141,4 @@ Ads
     </div>
 	
 	<!-- End Container Profile-->
-
-@endsection
+					@endsection

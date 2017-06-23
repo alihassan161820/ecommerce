@@ -316,7 +316,9 @@ Service
 
           {!! Html::script('js/snap.svg-min.js') !!}
           {!! Html::script('js/hovers.js') !!}
- 
+          
+
+
               <!-- Custom JS -->
 
           {!! Html::script('js/custom.js') !!}

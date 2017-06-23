@@ -1,11 +1,5 @@
 <?php
 
-Route::get('/customer/ajaxupdate', 'ContactController@create');
-
-
-Route::post('/addtowish',function(){
-    return redirect('/xxx');
-});
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
@@ -13,44 +7,37 @@ Route::group(['prefix' => 'admin'], function () {
 
 Auth::routes();
 
+// home routes
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/home', 'HomeController@index');
 Route::post('/','SearchController@search');
 Route::get('/favorite','FavoriteController@index');
-Route::get('/p/{city}/{product?}','FilteredProduectController@show');
-Route::get('/xxx',function (){
-     dd(Search::search(
-        "Product",
-        ['Name', 'Description','City'],
-        'المنت',
-        ['Name'],
-        ['Name','asc'],
-        true
-        ));
-});
 
+//filtered products routes 
+Route::get('/p/{city}/{product?}','FilteredProduectController@show');
 Route::get('/c/{category}/{subcategory?}','FilteredProduectController@showProductsByCategory');
 
-
+// contact us routes
 Route::get('/contact','ContactController@create');
 Route::post('/contact','ContactController@store');
 
-
+// help routes
 Route::get('/help','HelpController@index');
 
-
+// products routes
 Route::get('createitem','ProductController@getCreate')->name('createitem');
 Route::post('createitem','ProductController@storeItem')->name('storeitem');
-
-Route::get('/xxxx',function(){
-    return view('layouts.app');
-});
+Route::get('/productdetails','ProductController@show');
 
 
-// ajax routes 
-// Route::post('addtowish', function(){
-//     // if (Request::ajax()){
-//     //     return dd(Response::json(Request::all()));
-//     // }
-//    return  dd('dsdsd');
-// });
+// auction routes
+Route::get('/auctiondetails','AuctionProductController@index');
+Route::get('/createauction','AuctionProductController@create');
+
+
+//profile routes 
+Route::get('/editprofile','ProfileController@edit');
+Route::get('/profile','ProfileController@show');
+
+
+

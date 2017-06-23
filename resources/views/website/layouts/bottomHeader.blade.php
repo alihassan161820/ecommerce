@@ -1,4 +1,4 @@
-		<div class="header-bottom" style="margin-bottom:45px"><!--header-bottom-->
+		<div class="header-bottom" ><!--header-bottom-->
 			<div class="container">
 				<div class="row">
 					<div class="col-sm-7">

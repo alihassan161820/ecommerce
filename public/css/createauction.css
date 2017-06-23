@@ -17,7 +17,7 @@
 }
 
 .table-user-information > tbody > tr {
-    border-top: 1px solid rgb(221, 221, 221);
+    border-top:none
 }
 
 .table-user-information > tbody > tr:first-child {
@@ -27,6 +27,7 @@
 
 .table-user-information > tbody > tr > td {
     border-top: 0;
+	color:#104e8e;
 }
 .toppad
 {
@@ -39,12 +40,13 @@
 
 .panel-info .panel-heading
 {
-	background:#0164c9;
-	color:#FFF;
+	background:rgb(246, 246, 246);
+	border-color:rgb(246, 246, 246);
 }
 .panel-info
 {
-	border-color:#0164c9;
+	border:1px solid #ddd;
+	background: rgba(140, 136, 136, 0.08);
 }
 
 textarea
