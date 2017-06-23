@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "b06747adea6050a0ace192c8927fea7e",
+    "content-hash": "4b0832819b7eb89d070cca9f89df3af9",
     "packages": [
         {
             "name": "5dmatwebsearch/advancesearch",
@@ -48,7 +48,7 @@
                 "php",
                 "search"
             ],
-            "time": "2017-05-26 23:56:49"
+            "time": "2017-05-26T23:56:49+00:00"
         },
         {
             "name": "arrilot/laravel-widgets",
@@ -2697,7 +2697,7 @@
         },
         {
             "name": "tcg/voyager",
-            "version": "v0.11.12",
+            "version": "v0.11.14",
             "source": {
                 "type": "git",
                 "url": "https://github.com/the-control-group/voyager.git",

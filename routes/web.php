@@ -1,5 +1,12 @@
 <?php
 
+Route::get('/customer/ajaxupdate', 'ContactController@create');
+
+
+Route::post('/addtowish',function(){
+    return redirect('/xxx');
+});
+
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
@@ -37,4 +44,23 @@ Route::post('createitem','ProductController@storeItem')->name('storeitem');
 
 Route::get('/xxxx',function(){
     return view('layouts.app');
+});
+
+
+// ajax routes 
+// Route::post('addtowish', function(){
+//     // if (Request::ajax()){
+//     //     return dd(Response::json(Request::all()));
+//     // }
+//    return  dd('dsdsd');
+// });
+
+
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
+});
+
+
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
 });

@@ -71,6 +71,8 @@
       {!! Html::script('js/price-range.js') !!}
       {!! Html::script('js/jquery.prettyPhoto.js') !!}
       {!! Html::script('js/main.js') !!}
+      {!! Html::script('js/add-to-wish.js') !!}
+
 
       <script type="text/javascript">
         $(document).ready(function() {

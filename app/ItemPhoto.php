@@ -10,6 +10,7 @@ class ItemPhoto extends Model
         protected $table = 'itemphotos';
         public $timestamps = false;
         public $primaryKey  = '_id';
+        protected $fillable =['product_id'];
 
 
         public function product(){

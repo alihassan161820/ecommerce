@@ -3,13 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+// use Request;
 
 class FavoriteController extends Controller
 {
     
      public function __construct()
     {
-        $this->middleware('auth');
+        // $this->middleware('auth');
     }
     /**
      * Display a listing of the resource.
@@ -28,7 +29,7 @@ class FavoriteController extends Controller
      */
     public function create()
     {
-        
+       
     }
 
     /**
@@ -39,7 +40,10 @@ class FavoriteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       
+        $data = $request->all(); // This will get all the request data.
+
+        dd($data); // This will dump and die
     }
 
     /**

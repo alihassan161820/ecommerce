@@ -13,7 +13,7 @@ class Product extends Model
      protected $dates = ['created_at', 'updated_at'];
 
      protected $table = 'products';
-     protected $fillable =['Name, Description, Price, SubCategoryID, Units, ItemRate, subcategory_id'];
+     protected $fillable =['product_id','Name, Description, Price, SubCategoryID, Units, ItemRate, subcategory_id'];
         
      public function itemPhotos(){
             return $this->hasMany(ItemPhoto::class);

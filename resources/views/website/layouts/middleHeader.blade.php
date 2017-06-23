@@ -3,14 +3,14 @@
 				<div class="row">
 					<div class="col-sm-4">
 						<div class="logo pull-left">
-							<a href="/"><img style="width:50%" src="{{Request::root()}}/images/home/logo.png" alt="" /></a>
+							<a href="/"><img style="width:50%" src="{{Request::root()}}/images/home/logo33.png" alt="" /></a>
 						</div>
 
 					</div>
 					<div class="col-sm-8">
 						<div class="shop-menu pull-right">
 							<ul class="nav navbar-nav">
-								<li><a href="{{url('/favorite')}}"><i class="fa fa-heart-o"></i> Favorites</a></li>
+								<li><a href="{{url('/favorite')}}"><i class="fa fa-heart-o"></i> Wish list</a></li>
 
 
                                   @if(Auth::check() && Auth::user()->role_id == 1)

@@ -27,6 +27,7 @@ class HomeController extends Controller
     {  
         $featuredProds = Product::featuredProds();
         $latestProds = Product::latestProds();
+        
         return view('website.index',compact('featuredProds','latestProds'));
     }
     
