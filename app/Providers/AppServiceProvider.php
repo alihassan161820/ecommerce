@@ -23,7 +23,7 @@ class AppServiceProvider extends ServiceProvider
                 $view->with('categorries',Categorry::categories());
          });
          
-         view()->composer('website.layouts.bottomHeader',function($view){
+         view()->composer('website.layouts.middleHeader',function($view){
                 $view->with('cities',config('constant.cities'));
          });
 

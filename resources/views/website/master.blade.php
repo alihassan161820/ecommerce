@@ -17,18 +17,20 @@
     {!! Html::style('css/slick.css') !!}
         <!-- Photo Swipe Image Gallery -->     
     <link rel='stylesheet prefetch' href='{{ Request::root() }}/css/photoswipe.css'>
-    <link rel='stylesheet prefetch' href='{{ Request::root() }}/css/default-skin.css'>    
+    <link rel='stylesheet prefetch' href='{{ Request::root() }}/css/default-skin.css'>   
+
         <!-- Main structure css file -->
-     {!! Html::style('css/style.css') !!}
+
      {!! Html::style('css/main.css') !!}
+          {!! Html::style('css/style.css') !!}
      {!! Html::style('css/prettyPhoto.css') !!}
      {!! Html::style('css/price-range.css') !!}
      {!! Html::style('css/animate.css') !!}
      {!! Html::style('css/responsive.css') !!}
      {!! Html::style('css/select2.css') !!}
+          {!! Html::style('css/cus.css') !!}
 
 
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
       <link rel="icon" href="{{ Request::root() }}/images/06.png">
@@ -71,6 +73,8 @@
       {!! Html::script('js/price-range.js') !!}
       {!! Html::script('js/jquery.prettyPhoto.js') !!}
       {!! Html::script('js/main.js') !!}
+      {!! Html::script('js/add-to-wish.js') !!}
+
 
       <script type="text/javascript">
         $(document).ready(function() {

@@ -4,49 +4,14 @@ Home
 @endsection
 
 @section('container')
-	<section id="slider"><!--slider-->
-		@include('website.layouts.slider')
-	</section><!--/slider-->
-	
 	<div class="container">
 			<div class="row">
-				<div class="col-sm-3">
-					<div class="left-sidebar">				
-						<div class="brands_products"><!--brands_products-->
-							<h2>Categories</h2>
-							<div class="brands-name" id="accordion">
-								@if(!$categorries->isEmpty())
-									@foreach($categorries as $categorry)
-									<div class="panel">
-											<li><a data-toggle="collapse" data-parent="#accordion" href="#collapse{{$loop->index +1}}">{{$categorry->Name}}</a></li>
-										<div id="collapse{{$loop->index +1}}" class="panel-collapse collapse">
-											@foreach($categorry->subcategories as $subcategory)
-												<div class="panel-body"><a  href="{{ Request::root() }}/c/{{$categorry->Name}}/{{$subcategory->Name}}">➟ {{$subcategory->Name}}</a></div>
-											@endforeach				
-										</div>
-									</div>
-									@endforeach				
-									@endif	
-							</div>
-						</div><!--/brands_products-->
-
-						<div class="shipping text-center"><!--shipping-->
-							<img src="images/home/shipping.jpg" alt="" />
-						</div><!--/shipping-->
-
-						<div class="shipping text-center"><!--shipping-->
-							<img src="images/home/shipping.jpg" alt="" />
-						</div><!--/shipping-->
-
-						<div class="shipping text-center"><!--shipping-->
-							<img src="images/home/shipping.jpg" alt="" />
-						</div><!--/shipping-->
-							<div class="shipping text-center"><!--shipping-->
-							<img src="images/home/shipping.jpg" alt="" />
-						</div><!--/shipping-->
-			
-					</div>
-				</div>
+			<br>
+			<br>
+				@include('website.layouts.slider')
+				@include('website.layouts.about-us')
+				@include('website.layouts.left-sidebar')
+		
 				
 				<div class="col-sm-9 padding-right">
 					<div class="features_items"><!--features_items-->
@@ -67,7 +32,8 @@ Home
 																		<div class="overlay-content">
 																			<h2>{{$product->Price}} <span style="font-size:18px">EGP</span></h2>
 																			<p>{{$product->Name}} </p>
-																			<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+																			<input type="hidden" name="_token" value="{{ csrf_token() }}">
+																			<a class="btn btn-default add-to-cart add-to-wish" clicked="false" data-value="{{$product->id}}" id="{{$product->id}}"><i class="fa fa-shopping-cart"></i>Add to wish</a>
 																		</div>
 																	</div>
 															</div>
@@ -83,12 +49,8 @@ Home
 										@endforeach			
 								@endif
 					</div><!--features_items-->
-
-						<div class="pro ">
-							<img src="images/home/pro5.jpg" alt="" />
-						</div>
-
-					
+					</div>
+					<div class="col-sm-12" style="margin-top:20px">					
 					<div class="category-tab"><!--category-tab-->
 						<div class="col-sm-12">
 							<ul class="nav nav-tabs">
@@ -101,7 +63,7 @@ Home
 						</div>
 						<div class="tab-content">
 							<div class="tab-pane fade active in" id="tshirt" >
-								<div class="col-sm-3">
+								<div class="col-sm-2">
 									<div class="product-image-wrapper">
 										<div class="single-products">
 											<div class="productinfo text-center">
@@ -114,7 +76,7 @@ Home
 										</div>
 									</div>
 								</div>
-								<div class="col-sm-3">
+									<div class="col-sm-2">
 									<div class="product-image-wrapper">
 										<div class="single-products">
 											<div class="productinfo text-center">
@@ -127,7 +89,7 @@ Home
 										</div>
 									</div>
 								</div>
-								<div class="col-sm-3">
+									<div class="col-sm-2">
 									<div class="product-image-wrapper">
 										<div class="single-products">
 											<div class="productinfo text-center">
@@ -140,7 +102,33 @@ Home
 										</div>
 									</div>
 								</div>
-								<div class="col-sm-3">
+								<div class="col-sm-2">
+									<div class="product-image-wrapper">
+										<div class="single-products">
+											<div class="productinfo text-center">
+												<img src="images/home/iphone.jpg" alt="" />
+												<h2>$99</h2>
+												<p>Easy Polo Black Edition</p>
+												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+											</div>
+											
+										</div>
+									</div>
+								</div>
+								<div class="col-sm-2">
+									<div class="product-image-wrapper">
+										<div class="single-products">
+											<div class="productinfo text-center">
+												<img src="images/home/iphone.jpg" alt="" />
+												<h2>$99</h2>
+												<p>Easy Polo Black Edition</p>
+												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+											</div>
+											
+										</div>
+									</div>
+								</div>
+								<div class="col-sm-2">
 									<div class="product-image-wrapper">
 										<div class="single-products">
 											<div class="productinfo text-center">
@@ -156,7 +144,7 @@ Home
 							</div>
 							
 							<div class="tab-pane fade" id="blazers" >
-								<div class="col-sm-3">
+								<div class="col-sm-2">
 									<div class="product-image-wrapper">
 										<div class="single-products">
 											<div class="productinfo text-center">
@@ -169,7 +157,7 @@ Home
 										</div>
 									</div>
 								</div>
-								<div class="col-sm-3">
+								<div class="col-sm-2">
 									<div class="product-image-wrapper">
 										<div class="single-products">
 											<div class="productinfo text-center">
@@ -182,7 +170,7 @@ Home
 										</div>
 									</div>
 								</div>
-								<div class="col-sm-3">
+								<div class="col-sm-2">
 									<div class="product-image-wrapper">
 										<div class="single-products">
 											<div class="productinfo text-center">
@@ -195,7 +183,7 @@ Home
 										</div>
 									</div>
 								</div>
-								<div class="col-sm-3">
+								<div class="col-sm-2">
 									<div class="product-image-wrapper">
 										<div class="single-products">
 											<div class="productinfo text-center">
@@ -211,7 +199,7 @@ Home
 							</div>
 							
 							<div class="tab-pane fade" id="sunglass" >
-								<div class="col-sm-3">
+								<div class="col-sm-2">
 									<div class="product-image-wrapper">
 										<div class="single-products">
 											<div class="productinfo text-center">
@@ -224,7 +212,7 @@ Home
 										</div>
 									</div>
 								</div>
-								<div class="col-sm-3">
+								<div class="col-sm-2">
 									<div class="product-image-wrapper">
 										<div class="single-products">
 											<div class="productinfo text-center">
@@ -237,7 +225,7 @@ Home
 										</div>
 									</div>
 								</div>
-								<div class="col-sm-3">
+								<div class="col-sm-2">
 									<div class="product-image-wrapper">
 										<div class="single-products">
 											<div class="productinfo text-center">
@@ -250,7 +238,7 @@ Home
 										</div>
 									</div>
 								</div>
-								<div class="col-sm-3">
+								<div class="col-sm-2">
 									<div class="product-image-wrapper">
 										<div class="single-products">
 											<div class="productinfo text-center">
@@ -266,7 +254,7 @@ Home
 							</div>
 							
 							<div class="tab-pane fade" id="kids" >
-								<div class="col-sm-3">
+								<div class="col-sm-2">
 									<div class="product-image-wrapper">
 										<div class="single-products">
 											<div class="productinfo text-center">
@@ -279,7 +267,7 @@ Home
 										</div>
 									</div>
 								</div>
-								<div class="col-sm-3">
+								<div class="col-sm-2">
 									<div class="product-image-wrapper">
 										<div class="single-products">
 											<div class="productinfo text-center">
@@ -292,7 +280,7 @@ Home
 										</div>
 									</div>
 								</div>
-								<div class="col-sm-3">
+								<div class="col-sm-2">
 									<div class="product-image-wrapper">
 										<div class="single-products">
 											<div class="productinfo text-center">
@@ -305,7 +293,7 @@ Home
 										</div>
 									</div>
 								</div>
-								<div class="col-sm-3">
+								<div class="col-sm-2">
 									<div class="product-image-wrapper">
 										<div class="single-products">
 											<div class="productinfo text-center">
@@ -376,12 +364,21 @@ Home
 							</div>
 						</div>
 					</div><!--/category-tab-->
-					
-					<div class="pro ">
+					</div>
+			
+				</div>
+				<div class="row">
+					<div class="col-sm-9">
+							<div class="pro ">
 							<img src="images/home/pro5.jpg" alt="" />
 						</div>
+						</div>
+						<div class="col-sm-3">
+						<div class="pro ">
+							<img src="images/home/x.jpg" alt="" />
+						</div>
+					</div>
 				</div>
-
 				<div class="row">
 					<div class="col-sm-12">
 						<div class="recommended_items"><!--recommended_items-->

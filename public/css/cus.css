@@ -1,0 +1,78 @@
+.top-elements {
+    margin-top: 1px;
+}
+
+.signin-top {
+    margin-right: 8px;
+    margin-left: 58px;
+}
+
+.reg-top {
+    padding-top: 8px;
+}
+
+.user-name-top {
+    padding-left: 40px;
+    padding-top: 7px;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 93%;
+    left: 33px;
+    z-index: 1000;
+    display: none;
+    float: left;
+    min-width: 70px;
+    padding: 4px 0;
+    margin: 2px 0 0;
+    font-size: 14px;
+    list-style: none;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 4px;
+    -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+    background-clip: padding-box;
+}
+
+.seach-box {
+    left: 347px;
+    margin-top: 14px;
+}
+
+.search-btn {
+    width: 63px;
+    padding-bottom: 0px;
+    padding: 3px 0;
+    background-color: #104e8e;
+    border-color: #104e8e;
+}
+
+.search-box-input {
+    background-color: #fff;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    width: 139px;
+    padding: 2.6px 0px;
+    padding-left: 9px;
+    margin-right: 6px;
+    padding-right: 7px;
+    width: 161px;
+}
+
+.panel-body {
+    font-size: 1.4em
+}
+
+.our-service {
+    text-align: center;
+    margin-bottom: 80px;
+    margin-top: 245px;
+}
+
+.our-service-header {
+    margin-bottom: 20px;
+    color: #104e8e;
+}

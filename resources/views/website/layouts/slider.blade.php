@@ -1,6 +1,5 @@
-	<div class="container">
-			<div class="row">
-				<div class="col-sm-12">
+			<div class="row">		
+			<div class="col-sm-12">
 					<div id="slider-carousel" class="carousel slide" data-ride="carousel">
 						<ol class="carousel-indicators">
 							<li data-target="#slider-carousel" data-slide-to="0" class="active"></li>
@@ -11,7 +10,7 @@
 						<div class="carousel-inner">
 							<div class="item active">
 								<div class="col-sm-6">
-									<h1><span>3</span>-Almashy</h1>
+									<h1><span>1</span> - Alla Tre</h1>
 									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
 									<button type="button" class="btn btn-default get">Get it now</button>
 								</div>
@@ -22,7 +21,7 @@
 							</div>
 							<div class="item">
 								<div class="col-sm-6">
-									<h1><span>3</span>-Almashy</h1>
+									<h1 style="font-family:Roboto, sans-serif"><span>2</span> - Alla Tre</h1>
 									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
 									<button type="button" class="btn btn-default get">Get it now</button>
 								</div>
@@ -34,7 +33,7 @@
 							
 							<div class="item">
 								<div class="col-sm-6">
-									<h1><span>3</span>-Almashy</h1>
+									<h1><span>3</span> - Alla Tre</h1>
 									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
 									<button type="button" class="btn btn-default get">Get it now</button>
 								</div>
@@ -55,5 +54,5 @@
 					</div>
 					
 				</div>
-			</div>
 		</div>
+		
