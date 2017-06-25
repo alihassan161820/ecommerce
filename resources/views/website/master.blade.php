@@ -9,6 +9,8 @@
     <title>Alla Tre | @yield('title') </title>
     <title>{{ config('app.name', 'Alla Tre') }}</title>
 
+      @yield('style')
+
     {!! Html::style('css/bootstrap.min.css') !!}
     {!! Html::style('css/font-awesome.min.css') !!}
         <!-- Default Theme css file -->
@@ -28,9 +30,14 @@
      {!! Html::style('css/animate.css') !!}
      {!! Html::style('css/responsive.css') !!}
      {!! Html::style('css/select2.css') !!}
-     {!! Html::style('css/cus.css') !!}
      
+        <!--user dropdown-->
+        <link rel="stylesheet" type="text/css" href="/css/css/style.css" />        
+        <link rel="stylesheet" type="text/css" href="/css/css/user-drop.css" />
 
+        <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css' />
+		<script type="text/javascript" src="js/js/modernizr.custom.79639.js"></script> 
+		<noscript><link rel="stylesheet" type="text/css" href="css/css/noJS.css" /></noscript>
 
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -39,8 +46,8 @@
       <link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>  
       <link href='http://fonts.googleapis.com/css?family=Habibi' rel='stylesheet' type='text/css'>   
       <link href='http://fonts.googleapis.com/css?family=Cinzel+Decorative:900' rel='stylesheet' type='text/css'>
+     {!! Html::style('css/cus.css') !!}
     
-      @yield('style')
 
 	  <script>
           window.Laravel = {!! json_encode([
@@ -83,7 +90,49 @@
         });
         </script>
    
-      
+		<script type="text/javascript">
+
+			function DropDown(el) {
+				this.dd = el;
+				this.initEvents();
+			}
+			DropDown.prototype = {
+				initEvents : function() {
+					var obj = this;
+
+					obj.dd.on('click', function(event){
+						$(this).toggleClass('active');
+						event.stopPropagation();
+					});	
+				}
+			}
+
+			$(function() {
+
+				var dd = new DropDown( $('#dd') );
+
+				$(document).click(function() {
+					// all dropdowns
+					$('.wrapper-dropdown-5').removeClass('active');
+				});
+
+			});
+
+		</script>
+
+        		<script type="text/javascript">
+
+            $('.User').click(function(){
+                
+                if( $(".User-Dropdown").hasClass( "U-open" ) ){
+                        $('.User-Dropdown').removeClass("U-open");
+                }
+                else {
+                        $('.User-Dropdown').addClass("U-open");
+                }
+                });
+
+		</script>
         @yield('script')
 
       

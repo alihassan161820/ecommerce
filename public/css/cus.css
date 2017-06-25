@@ -13,7 +13,7 @@
 
 .user-name-top {
     padding-left: 40px;
-    padding-top: 7px;
+    padding-top: 9px;
 }
 
 .dropdown-menu {
@@ -43,11 +43,11 @@
 }
 
 .search-btn {
-    width: 63px;
-    padding-bottom: 0px;
-    padding: 3px 0;
     background-color: #104e8e;
     border-color: #104e8e;
+    text-transform: capitalize;
+    font-size: 11px;
+    font-weight: 700;
 }
 
 .search-box-input {
@@ -75,4 +75,41 @@
 .our-service-header {
     margin-bottom: 20px;
     color: #104e8e;
+}
+
+.place-new-ads {
+    position: absolute;
+    top: -72px;
+    z-index: 1;
+    left: 261px;
+    color: white;
+}
+
+.wrapper-dropdown-5 {
+    background: #104e8e;
+}
+
+.wrapper-dropdown-5:after {
+    border-color: #fff transparent;
+}
+
+.social-icons ul li a i {
+    padding: 11px 7px;
+}
+
+#fh5co-our-services {
+    width: 116%;
+    position: relative;
+    right: 88px;
+    padding-bottom: 9px;
+    padding-top: 60px;
+}
+
+.section-heading {
+    padding-bottom: 0;
+}
+
+.features_items,
+.left-sidebar {
+    padding-top: 30px;
 }

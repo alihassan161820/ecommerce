@@ -3,7 +3,7 @@
 				<div class="row">
 					<div class="col-sm-4">
 						<div class="logo pull-left">
-							<a href="/"><img style="width:50%" src="{{Request::root()}}/images/home/logo33.png" alt="" /></a>
+							<a href="/"><img style="width:62%" src="{{Request::root()}}/images/home/logo7.png" alt="" /></a>
 						</div>
 
 					</div>

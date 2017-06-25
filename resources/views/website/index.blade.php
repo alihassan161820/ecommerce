@@ -3,6 +3,20 @@
 Home
 @endsection
 
+@section('style')
+	
+	<!-- Animate.css -->
+	<link rel="stylesheet" href="our-service/css/animate.css">
+	<!-- Icomoon Icon Fonts-->
+	<link rel="stylesheet" href="our-service/css/icomoon.css">
+	<!-- Simple Line Icons -->
+	<link rel="stylesheet" href="our-service/css/simple-line-icons.css">
+	<!-- Owl Carousel -->
+	<link rel="stylesheet" href="our-service/css/bootstrap.css">
+		<link rel="stylesheet" href="our-service/css/style.css">
+	<script src="our-service/js/modernizr-2.6.2.min.js"></script>
+
+@endsection
 @section('container')
 	<div class="container">
 			<div class="row">
@@ -454,4 +468,19 @@ Home
 				</div>
 			</div>
 		</div>
+@endsection
+
+@section('script')
+
+	<script src="our-service/js/jquery.easing.1.3.js"></script>
+	<!-- Bootstrap -->
+	<script src="our-service/js/bootstrap.min.js"></script>
+	<!-- Waypoints -->
+	<script src="our-service/js/jquery.waypoints.min.js"></script>
+	<!-- Owl Carousel -->
+	<script src="our-service/js/owl.carousel.min.js"></script>
+
+
+	<!-- Main JS (Do not remove) -->
+	<script src="our-service/js/main.js"></script>
 @endsection
