@@ -22,14 +22,12 @@ Ads
 																		<h2>{{$product->Price}} <span style="font-size:18px">EGP</span></h2>
 																		@endif				
 																	</div>
-																		@if($product->auction)
-																	<input type="hidden" class="bid-amount" name="bid-amount" id="{{$product->auction->id}}">																	
-																	@foreach($product->auction->bids as $bid)
+																		@if($product->auction_id)
+																	<input type="hidden" class="bid-amount" name="bid-amount" id="{{$product->auction_id}}">																	
 																	<input type="hidden" name="_token" value="{{ csrf_token() }}">
-																	<h2 class="auction-bid" id="bid-amount-{{$product->auction->id}}">{{$bid->Amount}}</h2>
-																	@endforeach
-																	<div class="clockdiv clockdiv2" id="clockdiv{{$product->auction->id}}"data-value="{{$product->auction->id}}">
-  																		<input type="hidden" class="endtime endtime{{$product->auction->id}}" name="auction-end-time" value="{{$product->auction->EndTime}}">
+																	<h2 class="auction-bid" id="bid-amount-{{$product->auction_id}}">{{$product->Amount}}</h2>
+																	<div class="clockdiv clockdiv2" id="clockdiv{{$product->auction_id}}"data-value="{{$product->auction_id}}">
+  																		<input type="hidden" class="endtime endtime{{$product->auction_id}}" name="auction-end-time" value="{{$product->EndTime}}">
 																		<div>
 																			<span class="days days2"></span>
 																			<div class="smalltext">Days</div>
@@ -47,7 +45,7 @@ Ads
 																			<div class="smalltext">Seconds</div>
 																		</div>
 																	</div>
-																	<div class="sold-out-img" id="clockdiv{{$product->auction->id}}-img">
+																	<div class="sold-out-img" id="clockdiv{{$product->auction_id}}-img">
 																	</div>
 																	@endif
 																	<div class="product-overlay">
@@ -92,7 +90,6 @@ Ads
 			</div>
 		</div>
 @endsection
-
 
 @section('script')
       {!! Html::script('js/counter-update.js') !!}      

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Categorry;
 use App\Subcategory;
 use App\ItemPhoto;
-
+use App\Auction;
 
 class Product extends Model
 {       
@@ -27,11 +27,16 @@ class Product extends Model
         return $this->hasMany(Product::class);
     }
 
+    public function auction()
+    {
+        return $this->belongsTo(Auction::class);
+    }
+
     public static function featuredProds ()
     {
         return static::join('users','products.seller_id','=','users.id')
                                 ->join('itemphotos','products.id','=','itemphotos.product_id')
-                                ->select('products.Price','products.Name','products.created_at','products.City','products.id','itemphotos.*')
+                                ->select('products.Price','products.Name','products.created_at','products.City','products.id','products.auction_id','itemphotos.*')
                                 ->where('users.verified','=','1')->get();
     }
 
@@ -39,15 +44,23 @@ class Product extends Model
     {
         return static::join('users','products.seller_id','=','users.id')
                                 ->join('itemphotos','products.id','=','itemphotos.product_id')
-                                ->select('products.Price','products.Name','products.created_at','products.City','products.id','itemphotos.*')
-                                ->latest()->get();;
+                                ->select('products.Price','products.Name','products.created_at','products.City','products.id','products.auction_id','itemphotos.*')
+                                ->latest()->get();
+    }
+
+        public static function latestProdslimit ()
+    {
+        return static::join('users','products.seller_id','=','users.id')
+                                ->join('itemphotos','products.id','=','itemphotos.product_id')
+                                ->select('products.Price','products.Name','products.created_at','products.City','products.id','products.auction_id','itemphotos.*')
+                                ->latest()->limit(12)->get();
     }
 
     public static function getProductByCity($city)
     {
         return static::where('City','=', $city)
                             ->join('itemphotos','products.id','=','itemphotos.product_id')
-                            ->select('products.Price','products.Name','products.created_at','products.City','products.id','itemphotos.*')
+                            ->select('products.Price','products.Name','products.created_at','products.City','products.id','products.auction_id','itemphotos.*')
                             ->get();
     }
 
@@ -55,7 +68,9 @@ class Product extends Model
     {
         return Subcategory::join('categorry','subcategory.categorry_id','=','categorry.id')
                                                 ->join('products','products.subcategory_id','=','subcategory.id')
-                                                ->select('products.Price','products.Name','products.created_at','products.City','products.id','itemphotos.*')
+                                                ->leftjoin('auction','auction.id','=','products.auction_id')
+                                                ->leftjoin('bid','auction.id','bid.auction_id')
+                                                ->select('products.Price','products.Name','products.created_at','products.City','products.id','products.auction_id','itemphotos.*','auction.*','Amount')
                                                 ->join('itemphotos','products.id','=','itemphotos.product_id')
                                                 ->where('categorry.Name','=',$category)
                                                 ->latest()->get();
@@ -67,7 +82,7 @@ class Product extends Model
             return Product::join('subcategory','products.subcategory_id','=','subcategory.id')
                                      ->where('subcategory.Name','=',$category)
                                      ->join('itemphotos','products.id','=','itemphotos.product_id')
-                                     ->select('products.Price','products.Name','products.created_at','products.City','products.id','itemphotos.*')  
+                                     ->select('products.Price','products.Name','products.created_at','products.City','products.id','products.auction_id','itemphotos.*')  
                                     ->latest()->get();
     }
 

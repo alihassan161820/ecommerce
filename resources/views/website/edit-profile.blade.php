@@ -1,9 +1,10 @@
 @extends('website.master')
 @section('title')
-Ads
+Edit your profile
 @endsection
 @section('style')
      {!! Html::style('css/editprofilepage.css') !!}
+     {!! Html::style('css/sm.css') !!}
 @endsection
 @section('container')
 	<section id="blogArchive">      
@@ -38,65 +39,98 @@ Ads
    
           <div class="panel panel-info">
             <div class="panel-heading">
-              <h3 class="panel-title"> Name</h3>
+              <h3 class="panel-title"> {{ucwords(Auth::user()->name)}}</h3>
             </div>
             <div class="panel-body">
               <div class="row">
-                <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="images/user.jpg" class="img-circle img-responsive">
-					<a href="#" class="btn btn-danger">Select Image</a>
+                <div colspan="12"  align="center">
+                 <img id="image" alt="User Pic" src="{{url('../') }}/storage/{{ Auth::user()->avatar}}" width="170px" height="170px" class="img-circle"  >					
+				
 				</div>
+
+
+                <div class=" col-md-12 col-lg-12 "> 
 				
-				
-                <div class=" col-md-9 col-lg-9 "> 
-				
-					<form>
-					
+					<form enctype="multipart/form-data" action="/updateprofile" method="POST">
+							<input type="hidden" name="_token" value="{{ csrf_token() }}">
+							
+							
+							
+<!-- 
+							<label class="fileContainer">
+							    Select Image
+							    <input type="file" name="avatar"/>
+							</label>
+							<br>
+							<br> -->
 						<table class="table table-user-information">
 							<tbody>
 							  
+							<tr>
+							  <td id="a"> User Picture:</td>
+								<td> <input type="file" class="form-control-file"  name="avatar" > </td>
+							 </tr>
+
 							  <tr>
-								<td>Gender</td>
+							  <td id="a">Name:</td>
+								<td> <input type="text" class="form-control" placeholder="Name" name="name" value="{{$data->name}}"> </td>
+							  </tr>
+
+							  <tr>
+								<td id="a">Gender:</td>
 								<td> 
-									<input type="radio" name="Gender" value="Male" checked />Male<br/>
-									<input type="radio" name="Gender" value="Female"/> Female
+									<input type="radio" name="gender" value="Male" checked />Male<br/>
+									<input type="radio" name="gender" value="Female"/> Female
 								</td>
 							 </tr>
 							  
 							  <tr>
-								<td>Date of Birth</td>
-								<td> <input type="Date" name="DOB"/> </td>
+								<td id="a">Birthdate:</td>
+								<td> <input type="Date" class="form-control" placeholder="Birthdate" name="birthdate" value="{{$data->birthdate}}" ></td>
 							  </tr>
-					
+					<tr>
+								<td id="a">Phone Number:</td>
+								<td>  <input type="tel" class="form-control" placeholder="Phone" name="phone" value="{{$data->phone}}"> </td>
+							  </tr>
+							  @if(!is_null($address))
 							  <tr>
-								<td>Country</td>
-								<td> <input type="text" name="Country"/> </td>
+								<td id="a">Country:</td>
+								<td> <input type="text" class="form-control" placeholder="Country Name" name="Country" value="{{$address->Country}}"> </td>
 							  </tr>
 							  
 							  <tr>
-								<td>City</td>
-								<td> <input type="text" name="City"/> </td>
+								<td id="a">City:</td>
+								<td> <input type="text" class="form-control" placeholder="City Name" name="City" value="{{$address->City}}"> </td>
 							  </tr>
 							  
 							  <tr>
-								<td>Home address</td>
-								<td> <input type="text" name="HomeAddress"/> </td>
+								<td id="a">Home address:</td>
+								<td> <input type="text" class="form-control" placeholder="Street Name" name="Street" value="{{$address->Street}}"> </td>
+							  </tr>
+							  @else
+							  <tr>
+								<td id="a">Country:</td>
+								<td> <input type="text" class="form-control" placeholder="Country Name" name="Country" value=""> </td>
 							  </tr>
 							  
 							  <tr>
-								<td>Email</td>
-								<td> <input type="email" name="Email"/> </td>
+								<td id="a">City:</td>
+								<td> <input type="text" class="form-control" placeholder="City Name" name="City" value=""> </td>
 							  </tr>
 							  
 							  <tr>
-								<td>Phone Number</td>
-								<td> <input type="tel" name="Phone"/> </td>
+								<td id="a">Home address:</td>
+								<td> <input type="text" class="form-control" placeholder="Street Name" name="Street" value=""> </td>
 							  </tr>
+							  
+							  @endif
 							  
 							</tbody>
 						</table>
 					  
-					  <input type="submit" value="Save Change">
-					  
+					<button class="pull-right btn btn-lg btn-danger">Cancel</button>
+					<span></span>
+					  <button href="/profile" class="pull-right btn btn-lg btn-danger">Save</button>
 					</form>
 					
                 </div>
@@ -111,4 +145,3 @@ Ads
 	<!-- End Container Profile-->
 	
 @endsection
-

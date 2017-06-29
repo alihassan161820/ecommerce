@@ -1,93 +1,76 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Favorite;
+use Illuminate\Support\Facades\Auth;    
 use Illuminate\Http\Request;
-// use Request;
+use Illuminate\Support\Facades\Input;
 
 class FavoriteController extends Controller
 {
     
      public function __construct()
     {
-        // $this->middleware('auth');
-    }
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        return view('website.favorite');
+        $this->middleware('auth',['only'=>'index']);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function index()
+    {   
+        $favorites = Favorite::favoriteProductsDetails(Auth::user()->id);
+        // return dd($favorites);
+        return view('website.favorite',compact('favorites'));
+    }
+
     public function create()
     {
        
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-       
-        $data = $request->all(); // This will get all the request data.
-
-        dd($data); // This will dump and die
+       if ($request->ajax()) {
+			$favorite = new Favorite;
+			$favorite->product_id = Input::get('product_id');
+            $favorite->users_id=Auth::user()->id;
+			$favorite->save();
+			print_r(Input::get('product_id'));
+		}
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         //
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function edit($id)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         //
     }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+    
+    public function destroy(Request $request)
     {
-        //
+           if ($request->ajax()) {
+			$favorite = new Favorite;
+			$product_id = Input::get('product_id');
+            $favorite->where('users_id','=',Auth::user()->id)
+                           ->where('product_id','=',$product_id)
+                           ->delete();
+			print_r($favorite);
+		}
+        else{
+            if ($request){
+                $favorite = new Favorite;
+                $product_id = Input::get('product_id');
+                $favorite->where('users_id','=',Auth::user()->id)
+                               ->where('product_id','=',$request->id)
+                               ->delete();
+                return redirect('/favorite');
+            }
+        }
     }
 }

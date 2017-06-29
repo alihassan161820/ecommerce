@@ -15,8 +15,8 @@
 									<button type="button" class="btn btn-default get">Get it now</button>
 								</div>
 								<div class="col-sm-6">
-									<img src="images/home/img01.jpg" class="img img-responsive" alt="" />
-									<img src="images/home/price3.gif"  class="pricing" alt="" />
+									<img src="{{ Request::root() }}/images/home/img01.jpg" class="img img-responsive" alt="" />
+									<img src="{{ Request::root() }}/images/home/price3.gif"  class="pricing" alt="" />
 								</div>
 							</div>
 							<div class="item">
@@ -26,8 +26,8 @@
 									<button type="button" class="btn btn-default get">Get it now</button>
 								</div>
 								<div class="col-sm-6">
-									<img src="images/home/img01.jpg" class="img img-responsive" alt="" />
-									<img src="images/home/price3.gif"  class="pricing" alt="" />
+									<img src="{{ Request::root() }}/images/home/img01.jpg" class="img img-responsive" alt="" />
+									<img src="{{ Request::root() }}/images/home/price3.gif"  class="pricing" alt="" />
 								</div>
 							</div>
 							
@@ -38,8 +38,8 @@
 									<button type="button" class="btn btn-default get">Get it now</button>
 								</div>
 								<div class="col-sm-6">
-									<img src="images/home/img01.jpg" class="img img-responsive" alt="" />
-									<img src="images/home/price3.gif" class="pricing" alt="" />
+									<img src="{{ Request::root() }}/images/home/img01.jpg" class="img img-responsive" alt="" />
+									<img src="{{ Request::root() }}/images/home/price3.gif" class="pricing" alt="" />
 								</div>
 							</div>
 							

@@ -1,50 +1,48 @@
-$.ajaxSetup({
-	headers: {
-		'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-	        }
-});
-
-
 $(document).ready(function() {
-    $('.add-to-wish').click(function() {
 
-var id = 12; // A random variable for this example
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
 
-$.ajax({
-    method: 'GET', // Type of response and matches what we said in the route
-    url: '/customer/ajaxupdate', // This is the url we gave in the route
-    data: {'id' : id}, // a JSON object to send back
-    success: function(response){ // What to do if we succeed
-        // console.log(response); 
-    },
-    error: function(jqXHR, textStatus, errorThrown) { // What to do if we fail
-        console.log(JSON.stringify(jqXHR));
-        console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
-    }
-});
-        // var val = $(this).data('value');
-        // if ($(this).attr('clicked') == 'false') {
-        //     var product_id = $(this).data('value');
-            // $.post('addtowish',{product_id : 'dasd'}, function(){
-            //     // console.log('added');
-            //     $('#' + val).html('added to wish');
-            //     $(this).attr('clicked', 'true');
-            // });
+    $(".add-to-wish").click(function() {
+        var val = $(this).data('value');
+        if ($(this).attr('clicked') == 'false') {
+            var product_id = $(this).data('value');
+            $.ajax({
+                data: { product_id: product_id },
+                url: 'addtowish',
+                type: 'POST',
+                beforeSend: function(request) {
+                    return request.setRequestHeader('X-CSRF-Token', $("meta[name='csrf-token']").attr('content'));
+                },
+                success: function(response) {
+                    $('#' + val).html('Remove from wish list');
+                    console.log(response);
+                }
+            });
+            $(this).attr('clicked', 'true');
+        } else if ($(this).attr('clicked') == 'true') {
+            var product_id = $(this).data('value');
+            $.ajax({
+                data: { product_id: product_id },
+                url: 'removefromwish',
+                type: 'POST',
+                beforeSend: function(request) {
+                    return request.setRequestHeader('X-CSRF-Token', $("meta[name='csrf-token']").attr('content'));
+                },
+                success: function(response) {
+                    $('#' + val).html('Add to wish');
+                    console.log(response);
+                }
+            });
+            $(this).attr('clicked', 'false');
 
-            // $.ajax({
-            //     type:"POST",
-            //     url:"addtowish",
-            //     data : 'product_id',
-            //     success:function(data){
-            //         console.log('el7');
-            //     }
-            // });
-         
-        // }
-        // else{
-        //     $(this).attr('clicked', 'false');
-        //                     console.log('false');
-
-        // }
+        }
     });
 });
+
+
+// counter ajax
+

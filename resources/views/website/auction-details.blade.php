@@ -200,5 +200,4 @@ Home
 
               <!-- Custom JS -->
 
-          {!! Html::script('js/custom.js') !!}
 @endsection

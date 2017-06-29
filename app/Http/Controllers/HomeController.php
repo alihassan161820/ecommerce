@@ -1,33 +1,48 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Auth;    
 use Illuminate\Http\Request;
 use App\Categorry;
 use App\Product;
 use App\User;
+use App\Auction;
+use App\Favorite;
+use Log;
+use Illuminate\Support\Facades\Input;
+use Response;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
+
     public function __construct()
     {
     }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {  
         $featuredProds = Product::featuredProds();
-        $latestProds = Product::latestProds();
-        return view('website.index',compact('featuredProds','latestProds'));
+        $latestProds = Product::latestProdslimit();
+        if (Auth::check()){
+        $favorites = Favorite::favoriteProducts(Auth::user()->id);
+            return view('website.index',compact('featuredProds','latestProds','favorites'));            
+        }
+        else{
+            return view('website.index',compact('featuredProds','latestProds'));            
+        }
+   
     }
     
+    public function updateBid(Request $request){
+        if ($request->ajax()) {
+		   $array = Input::get('idIndex');
+           $auction = new Auction();
+           $bids = $auction->join('bid','bid.auction_id','auction.id')
+                                    ->select('auction.id','bid.Amount')                                    
+                                    ->find($array);
+            return Response::json(['success' => json_encode($bids)], 200);
+		}
+     
+    }
 }

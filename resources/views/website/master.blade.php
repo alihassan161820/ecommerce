@@ -10,7 +10,8 @@
     <title>{{ config('app.name', 'Alla Tre') }}</title>
 
       @yield('style')
-
+      
+    {!! Html::style('css/cus.css') !!}
     {!! Html::style('css/bootstrap.min.css') !!}
     {!! Html::style('css/font-awesome.min.css') !!}
         <!-- Default Theme css file -->
@@ -30,6 +31,7 @@
      {!! Html::style('css/animate.css') !!}
      {!! Html::style('css/responsive.css') !!}
      {!! Html::style('css/select2.css') !!}
+
      
         <!--user dropdown-->
         <link rel="stylesheet" type="text/css" href="/css/css/style.css" />        
@@ -46,8 +48,8 @@
       <link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>  
       <link href='http://fonts.googleapis.com/css?family=Habibi' rel='stylesheet' type='text/css'>   
       <link href='http://fonts.googleapis.com/css?family=Cinzel+Decorative:900' rel='stylesheet' type='text/css'>
-     {!! Html::style('css/cus.css') !!}
-    
+      {!! Html::style('css/cus.css') !!}
+      {!! Html::style('css/sm.css') !!}
 
 	  <script>
           window.Laravel = {!! json_encode([
@@ -75,13 +77,14 @@
 	@include('website.layouts.footer')
 		
       {!! Html::script('js/jquery.js') !!}
+      {!! Html::script('js/add-to-wish.js') !!}      
       {!! Html::script('js/select2.min.js') !!}
       {!! Html::script('js/bootstrap.min.js') !!}
       {!! Html::script('js/jquery.scrollUp.min.js') !!}
       {!! Html::script('js/price-range.js') !!}
       {!! Html::script('js/jquery.prettyPhoto.js') !!}
       {!! Html::script('js/main.js') !!}
-      {!! Html::script('js/add-to-wish.js') !!}
+
 
 
       <script type="text/javascript">
@@ -133,6 +136,8 @@
                 });
 
 		</script>
+
+        
         @yield('script')
 
       

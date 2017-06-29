@@ -4,6 +4,8 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class User extends Authenticatable
 {
@@ -33,5 +35,21 @@ class User extends Authenticatable
 
     public function addresses(){
         return $this->hasMany(Address::class);
+    }
+
+    public static function address($user_id){
+            return static::join('address','address.users_id','users.id')
+                    ->where('users.id','=',$user_id)
+                    ->select('address.users_id','address.Country','address.City','address.Street')
+                    ->get();
+    }
+    public function gender()
+    {
+        if(Auth::user()->gender == 'f')
+                      {return "Female";} 
+                        
+                       
+                       elseif(Auth::user()->gender == 'm')
+                      { return "male";}
     }
 }

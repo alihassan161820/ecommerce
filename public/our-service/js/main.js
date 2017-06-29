@@ -100,6 +100,8 @@
 		$('a:not([class="external"])').click(function(event){
 			var section = $(this).data('nav-section'),
 				navbar = $('#navbar');
+				console.log(navbar);
+				console.log(section);
 		    $('html, body').animate({
 		        scrollTop: $('[data-section="' + section + '"]').offset().top
 		    }, 500);

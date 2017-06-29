@@ -38,13 +38,14 @@
 									<div class="wrapper-demo">
 										<div id="dd" class="wrapper-dropdown-5" tabindex="1">Place a New Ad
 											<ul class="dropdown">
-												<li><a href="{{url('/createauction')}}"><i class="icon-user"></i>Auction</a></li>
-												<li><a href="{{url('/createitem')}}"><i class="icon-cog"></i>Fixed Price</a></li>
+												<li><a href="{{url('/createauction')}}"><i class="fa fa-gavel"></i>Auction</a></li>
+												<li><a href="{{url('/createitem')}}"><i class="fa fa-shopping-cart"></i>Fixed Price</a></li>
 											</ul>
 										</div>
 									​</div>
 								</section>
-					</div>           @endif
+				</div>           		
+				@endif
             
 			
 				</div>

@@ -40,5 +40,18 @@ return [
                         "Flaminj",
                         "Kafr ash Shaykh",
                         "Badr"
+                        ],
+
+             'classes' => [   "sportswear",
+                                   "mens", 
+                                    "womens",
+                                    "Mobile",
+                                    "Fashion",
+                                    "Pets",
+                                    "Sports",
+                                    "Hobbies",
+                                    "Furnitures",
+                                    "Appliances"
+                                    
                         ]
 ];

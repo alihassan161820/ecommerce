@@ -22,11 +22,9 @@ Home
 				</div>
 			  </div>
 			</div>        
-		  </div>      
+		  </div>       
 		</section> 
 	
-
-   
    <!-- Start Container Profile-->
    
 	<div class="container">

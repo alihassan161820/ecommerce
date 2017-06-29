@@ -27,6 +27,14 @@ class AppServiceProvider extends ServiceProvider
                 $view->with('cities',config('constant.cities'));
          });
 
+         view()->composer('website.create-auction',function($view){
+                $view->with('cities',config('constant.cities'));
+         });
+
+         view()->composer('website.layouts.left-sidebar',function($view){
+                $view->with('classes',config('constant.classes'));
+         });
+
     }
 
     /**
