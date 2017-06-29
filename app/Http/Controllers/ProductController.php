@@ -4,28 +4,31 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use App\Http\Requests\UploadRequest;
 use App\User;
 use Illuminate\Http\Request;
 use App\Product;
 use App\Auction;
 use App\Categorry;
-use Illuminate\Support\Facades\DB;
-use App\Http\Requests\UploadRequest;
 use App\ItemPhoto;
 use Illuminate\Support\Facades\Input;
 use Intervention\Image\ImageManagerStatic as Image;
 use Illuminate\Support\Facades\Session;
+use Storage;
+
+
 
 
 class ProductController extends Controller
 {
 
-        public function __construct()
+ public function __construct()
         {   
-            // if(!$this->middleware('auth'))
-            // {
-            //     return redirect('/home');
-            // }
+            if(!$this->middleware('auth'))
+            {
+                return redirect('/home');
+            }
         }
 
 
@@ -46,124 +49,144 @@ class ProductController extends Controller
             return view('website.create-product');
         }
 
-
+        
         public function storeItem(Request $request,UploadRequest $photoRequest)
         {
+ 
 
 
             $this->validate($request,[
-                    'Name' => 'required',
-                    'Description' => 'required|max:255',
-                    'Price' => 'required|numeric|min:0.00',
-                    'Units' => 'required|numeric|min:1'
+                    'name' => 'required',
+                    'city' => 'required',
+                    'description' => 'required|max:255',
+                    'price' => 'required|numeric|min:0.00',
+                    'Condition' => 'required',
+                    'units' => 'required|numeric|min:1'
                     ]);
 
             $product =new Product();
-            $product->Name =$request['Name'];
-            $product->Description =$request['Description'];
-            $product->Price =$request['Price'];
-            $product->Units =$request['Units'];
-            $product->Availability =1;
-            $product->seller_id = Auth::user()->id;
+            $product->name =$request['name'];
+            $product->condition =$request['condition'];
+
+            $product->description =$request['description'];
+            $product->price =$request['price'];
+            $product->units =$request['units'];
+            $product->availability =1;
+            // $product->seller_id = Auth::user()->id;
             $product->save();
 
-            $available= $product->Availability == 1 ? 'Available for buying' : 'Sold';      
+            $available= $product->availability == 1 ? 'available for buying' : 'Sold';      
             $itemphoto = new ItemPhoto();
 
             foreach ($photoRequest->Photos as $photo)
             {
-                    $Photo = $photo->store('public/item_image');
-                        // $itemphoto->ItemID = $product->id ;
-                        // $itemphoto->Photos = $Photo;
-                        // $itemphoto->save();
-                    ItemPhoto::create([
-                            'product_id' => $product->id,
-                            'Photos' => $Photo
-                        ]);            
+                $itemphoto = new ItemPhoto();
+                $fileName = $photo->getClientOriginalName();
+
+                $image_thumb =Image::make($photo)->resize(300,300)->stream();
+
+                $uploaded = Storage::disk('product_image')->put($product->id . $fileName,$image_thumb->__toString());
+ 
+                $itemphoto->product_id =$product->id ;
+                $itemphoto->Photos = $product->id . $fileName;
+
+                $itemphoto->save();
+                    // $Photo = $photo->store('public/item_image');
+                    //     // $itemphoto->ItemID = $product->id ;
+                    //     // $itemphoto->Photos = $Photo;
+                    //     // $itemphoto->save();
+                    // ItemPhoto::create([
+                    //         'product_id' => $product->id,
+                    //         'Photos' => $Photo
+                    //     ]);            
                 }
                 
             $item_photos = ItemPhoto::where('product_id',$product->id)->get();
+
+           // dd($item_photos);
             session([  
             'item_photos' => $item_photos
             ]);
                 
             $request->session()->put('product', $product);
-            return redirect('item');  
+            return redirect('/item/' . $product->id);  
             }
 
-               /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    
+
+
+   
+  
+    public function show($id)
     {
-       
+        $product = Product::find($id);
+        return view("website.product-detail" ,compact('product'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id="")
-    {
-        return view("website.product-detail");
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+  
     public function edit($id)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+  
     public function update(Request $request, $id)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+  
     public function destroy($id)
     {
-        //
     }
+      
+
+
+
+        // public function storeItem(Request $request,UploadRequest $photoRequest)
+        // {
+
+
+        //     $this->validate($request,[
+        //             'Name' => 'required',
+        //             'Description' => 'required|max:255',
+        //             'Price' => 'required|numeric|min:0.00',
+        //             'Units' => 'required|numeric|min:1'
+        //             ]);
+
+        //     $product =new Product();
+        //     $product->Name =$request['Name'];
+        //     $product->Description =$request['Description'];
+        //     $product->Price =$request['Price'];
+        //     $product->Units =$request['Units'];
+        //     $product->Availability =1;
+        //     $product->seller_id = Auth::user()->id;
+        //     $product->save();
+
+        //     $available= $product->Availability == 1 ? 'Available for buying' : 'Sold';      
+        //     $itemphoto = new ItemPhoto();
+
+        //     foreach ($photoRequest->Photos as $photo)
+        //     {
+        //             $Photo = $photo->store('public/item_image');
+        //                 // $itemphoto->ItemID = $product->id ;
+        //                 // $itemphoto->Photos = $Photo;
+        //                 // $itemphoto->save();
+        //             ItemPhoto::create([
+        //                     'product_id' => $product->id,
+        //                     'Photos' => $Photo
+        //                 ]);            
+        //         }
+                
+        //     $item_photos = ItemPhoto::where('product_id',$product->id)->get();
+        //     session([  
+        //     'item_photos' => $item_photos
+        //     ]);
+                
+        //     $request->session()->put('product', $product);
+        //     return redirect('item');  
+        //     }
+
+
+
 }

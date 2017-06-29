@@ -1,8 +1,8 @@
-@extends('website.master')
+<!-- @extends('website.master')
 @section('title')
 Ads
 @endsection
-@section('container')
+@section('container') -->
 
 		<section id="blogArchive">      
 		  <div class="row">
@@ -36,66 +36,90 @@ Ads
 				<div class="panel panel-info">
 					<div class="panel-heading">
 				</div>
-				
 				<div class="panel-body">
 				  <div class="row">
 					<div class=" col-md-12 col-lg-12 "> 
-						<form>
+
+						<form enctype="multipart/form-data" method="POST" action="{{ route('createitem') }}">
+						
+						 {{ csrf_field() }}
 							<table class="table table-user-information">
 								<tbody>
 
 								<tr>
-									<td>City</td>
-									<td> <input type="text"/> </td>
-								</tr>
-
-								
-
-								<tr>
-									<td>Phone Number</td>
-									<td> <input type="number"/> </td>
+								<td>City</td>
+									<td> <input type="text" id="city"  name="city" class="form-control" value="{{ old('city') }}"   required autofocus>
+                               @if ($errors->has('city'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('city') }}</strong>
+                                    </span>
+                                @endif 
+                                </td>
 								</tr>
 
 								  <tr>
 									<td>Item Name</td>
-									<td> <input type="text"/> </td>
+									<td> <input type="text" id="name" type="text" class="form-control" name="name" value="{{ old('name') }}"   required autofocus>
+                               @if ($errors->has('name'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('name') }}</strong>
+                                    </span>
+                                @endif
+
+                                 </td>
 								  </tr>
 							    
 								 <tr>
 									<td> Price</td>
-									<td><input type="number" min="0"/></td>
+									<td><input type="number" min="0" id="price"  name="price" class="form-control" value="{{ old('price') }}" required>  
+                               @if ($errors->has('price'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('price') }}</strong>
+                                    </span>
+                                @endif</td>
 								  </tr>
 								  
 								  <tr>
 									<td>Number Of Unit</td>
-									<td><input type="number" min="0"/> </td>
-								  </tr>
+									<td><input type="number" min="0" id="units" name="units" class="form-control" value="{{ old('units') }}" required>  
+                              @if ($errors->has('no_of_units'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('no_of_units') }}</strong>
+                                    </span>
+                                @endif
+                                </td>
+								</tr>
 								  
 								  <tr>
-									<td>Condition</td>
+									<td >Condition</td>
 									<td> 
-									  <input type="radio" name="Condition" value="New" checked />New<br/>
-									  <input type="radio" name="Condition" value="Used"/> Used
+									  <input type="radio" name="Condition" value="new" /> New<br/>
+									  <input type="radio" name="Condition" value="used"/> Used
 									</td>
 								  </tr>
 								  
 								
 								  <tr>
 									<td>Choose Picture</td>
-									<td><input type="file" name="chose picture" accept="image/*" multiple /></td>
+									<td><input type="file" name="Photos[]" class="form-control" accept="image/*" multiple /></td>
 								  </tr>
 								  
 								  <tr>
 									<td>Description</td>
 									<td>
-										<textarea row="15" placeholder="What Would You Like To Say "></textarea>
+									<textarea name="description" id="description" class="form-control" cols="30" rows="10" placeholder="What would you like to say at description"></textarea>
+                               @if ($errors->has('description'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('description') }}</strong>
+                                    </span>
+                                @endif
 									</td>
 								  </tr>
 								  
 								</tbody>
 							</table>
-							<input type="submit" value="Create">
-							<input type="reset" value="Clear">
+							<input type="submit" value="Create"  class="btn btn-primary">
+					
 						</form>
 					</div>
 				  </div>
@@ -107,5 +131,46 @@ Ads
     </div>
 	
 	<!-- End Container Profile-->
-
+<!-- 
 @endsection
+ -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

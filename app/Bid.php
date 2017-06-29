@@ -7,9 +7,10 @@ use App\Auction;
 
 class Bid extends Model
 {
-        protected $table = 'bid';
+	    protected $table = 'bid';
         public $timestamps = false;
         public $primaryKey  = 'auction_id';
+
 
         public function auction(){
                 return $this->belongsTo(Auction::class);

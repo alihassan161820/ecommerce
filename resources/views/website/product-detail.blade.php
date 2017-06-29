@@ -32,10 +32,13 @@ Home
 				<div class="row">
 					<div class="col-lg-7">
 						<div class="product-image">
-							<img class="img-responsive" src="images/iphone.jpg"/>
-							<img src="images/iphone - Copy.jpg"/>
-							<img src="images/iphone - Copy.jpg"/>
-							<img src="images/iphone - Copy.jpg"/>
+
+							@foreach(session('item_photos') as $photos)
+                            
+
+                            <img class="img-responsive" src="{{asset('product_image/' . $photos->Photos)}}" alt="">
+                           
+                     @endforeach  
 						</div>
 					</div>
 					
@@ -44,27 +47,27 @@ Home
 							<table class="table table-user-information">
 								<tbody>
 								  <tr>
-									<td>Item Name : </td>
+									<td>Item Name : {{ $product->name }} </td>
 									<td>   </td>
 								  </tr>
 							   
 								  <tr>
-									<td>Unit Sold : </td>
+									<td>Unit Sold : {{ $product->units }} </td>
 									<td> </td>
 								  </tr>
 								  
 								  <tr>
-									<td>Price : </td>
+									<td>Price : {{ $product->price }} </td>
 									<td> </td>
 								  </tr>
 								  
 								  <tr>
-									<td>Condition : </td>
+									<td>Condition :{{ $product->condition }} </td>
 									<td> </td>
 								  </tr>
 								  
 								  <tr>
-									<td>Description : </td>
+									<td>Description : {{ $product->description }} </td>
 									<td>
 										
 									</td>

@@ -62,7 +62,7 @@ Wish-List
 													<td >
 														<form method="post" action="/favorite">
 																	{{ csrf_field() }}
-																	<input type="hidden" name="id" value="{{$product->id}}">
+																	<input type="hidden" name="id" value="{{$product->product_id}}">
 																	<button type="submit" class="btn btn-danger fav-remove">Remove</button>
 														</form>
 													</td>

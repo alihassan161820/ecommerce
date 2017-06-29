@@ -24,8 +24,8 @@ Service
                       <div class="service-icon">
                         <span class="fa fa-user service-icon-effect"></span>  
                       </div>                      
-                      <h3><a href="#">Register</a></h3>
-                      <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour</p>
+                      <h3><a href="\login">Register</a></h3>
+                      <p> The <a href="\login">Login</a> or Register page will ask you to enter an e-mail address, password, and your birth date. Your registration will create your Alla tre account which can be used to bid on auctions as it will also allow you to access information about your subTscriptions.</p>
                     </div>
                   </div>
                   <!-- Start Single Service -->
@@ -34,8 +34,11 @@ Service
                       <div class="service-icon">
                         <span class="fa fa-money service-icon-effect"></span>  
                       </div>                      
-                      <h3><a href="#">Buy or Bid</a></h3>
-                      <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour</p>
+                      <h3><a href="/createitem">Buy or Bid</a></h3>
+                      <p>In some listings you can select Buy Now to buy an item immediately at a fixed price.
+                          In auction-style listings and in most categories, 
+                          the Buy It Now option is only available until someone places a bid. 
+                          The option goes away and the item is then sold to the highest bidder.</p>
                     </div>
                   </div>
                   <!-- Start Single Service -->
@@ -44,8 +47,11 @@ Service
                       <div class="service-icon">
                         <span class="fa fa-bell service-icon-effect"></span>  
                       </div>                      
-                      <h3><a href="#">Submit a Bid</a></h3>
-                      <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour</p>
+                      <h3><a href="/createitem">Sell</a></h3>
+                      <p>To sell on Alla tre, you first need to register for an Alla tre account if you don’t have one. 
+                             Got to <a href="/createitem">Place a New Ads</a> page, if you want
+                             to sell your product in fixed price or if you want to create Auction Got to <a href="/createauction">Create Auction</a> page , and enter the details about your item.
+                     </p></p>
                     </div>
                   </div>
                 </div>
@@ -107,7 +113,7 @@ Service
                     </div>
                     <div class="media-body">
                       <h4 class="media-heading">Trusted</h4>
-                      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>  
+                      <p> Alla Tre come for you , we produce our service to you and we can save you from any tricked.</p>  
                     </div>
                   </div>
                   <div class="media">
@@ -117,8 +123,9 @@ Service
                       </a>
                     </div>
                     <div class="media-body">
+
                       <h4 class="media-heading">Safer</h4>
-                      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>  
+                      <p>We protect your information using technical and administrative security measures to reduce the risks of loss, misuse, unauthorized access, disclosure and alteration. Some of the safeguards we use are firewalls and data encryption, physical access controls to our data centers, and information access authorization controls..</p>  
                     </div>
                   </div>
                 </div>
@@ -189,13 +196,14 @@ Service
                   <div class="panel-heading">
                     <h4 class="panel-title">
                       <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-                        Store <span class="fa fa-minus"></span>
+                        I am new to Alla tre: Where do I start ? <span class="fa fa-minus"></span>
                       </a>
                     </h4>
                   </div>
                   <div id="collapseOne" class="panel-collapse collapse in">
                     <div class="panel-body">
-                     <p> Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.</p>
+                     <p> Everyone is invited to browse or search through our auction categories and listings for items on Alla tre. If you see something you would like to bid on you must first register by creating an Alla tre account, if you do not already have one. Don't worry! Account creation is free and easy!.</p>
+                  
                     </div>
                   </div>
                 </div>
@@ -209,8 +217,9 @@ Service
                   </div>
                   <div id="collapseTwo" class="panel-collapse collapse">
                     <div class="panel-body">
-                    <img class="img-center" src="images/choose-us-img3.jpg" alt="img">
-                     <p> Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
+                     <p> To sell on Alla tre, you first need to register for an Alla tre account if you don’t have one. 
+                              Your account must also be set up for selling. 
+                            to create Auction Got to <a href="/createauction">Create Auction</a> page , and enter the details about your item.
                      </p>
                     </div>
                   </div>
@@ -219,13 +228,22 @@ Service
                   <div class="panel-heading">
                     <h4 class="panel-title">
                       <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
-                        Bidding  <span class="fa fa-plus"></span>
+                        How i can bid on product  <span class="fa fa-plus"></span>
                       </a>
                     </h4>
                   </div>
                   <div id="collapseThree" class="panel-collapse collapse">
                     <div class="panel-body">
-                      <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
+                      <p>You can bid on an item in an auction by entering your bid amount in the listing.
+                           We'll let you know if someone else bids higher so you can bid again.
+
+                          To avoid being outbid, enter the highest amount or maximum bid you're willing to pay.
+                          Our automatic bidding system increases your bid in increments so you're the highest bidder
+                           until it reaches your maximum bid. 
+                          If someone bids higher than your maximum, we'll let you know in case you want to bid again.
+
+                          Only bid on items you intend to buy. In most cases, you can’t retract your bid.
+                          If you win, you must pay the seller..</p>
                     </div>
                   </div>
                 </div>
@@ -233,14 +251,13 @@ Service
                   <div class="panel-heading">
                     <h4 class="panel-title">
                       <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
-                        Name<span class="fa fa-plus"></span>
+                        When does an auction end?<span class="fa fa-plus"></span>
                       </a>
                     </h4>
                   </div>
                   <div id="collapseFour" class="panel-collapse collapse">
                     <div class="panel-body">
-                    <img class="img-center" src="images/choose-us-img3.jpg" alt="img">
-                     <p> Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
+                     <p> An auction is ended when the countdown reaches 00:00:00 .
                      </p>
                     </div>
                   </div>
@@ -249,13 +266,13 @@ Service
                   <div class="panel-heading">
                     <h4 class="panel-title">
                       <a data-toggle="collapse" data-parent="#accordion" href="#collapseFive">
-                        Name <span class="fa fa-plus"></span>
+                        What do I do, if I've forgotten my password or user name? <span class="fa fa-plus"></span>
                       </a>
                     </h4>
                   </div>
                   <div id="collapseFive" class="panel-collapse collapse">
                     <div class="panel-body">
-                      <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
+                      <p>On the <a style="text-decoration:underline;" href="/login">Login</a> page, below the block allowing to connect you on your account, click on the link "forgotten Password?”. Then indicate your e-mail address used for the registration on Swoggi and we will send you an email with your username and password..</p>
                     </div>
                   </div>
                 </div>

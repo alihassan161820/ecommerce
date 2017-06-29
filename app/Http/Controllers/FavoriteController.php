@@ -64,9 +64,7 @@ class FavoriteController extends Controller
 		}
         else{
             if ($request){
-                $favorite = new Favorite;
-                $product_id = Input::get('product_id');
-                $favorite->where('users_id','=',Auth::user()->id)
+                $favorite = Favorite::where('users_id','=',Auth::user()->id)
                                ->where('product_id','=',$request->id)
                                ->delete();
                 return redirect('/favorite');

@@ -16,7 +16,6 @@ Route::post('/{ti}/updataBidAmount', 'HomeController@updateBid');
 Route::post('/{ti}/{p}/updataBidAmount', 'HomeController@updateBid');
 
 
-
 // favorite routes
 Route::post('addtowish', 'FavoriteController@store');
 Route::post('removefromwish', 'FavoriteController@destroy');
@@ -43,15 +42,16 @@ Route::post('/contact','ContactController@store');
 Route::get('/help','HelpController@index');
 
 // products routes
-Route::get('createitem','ProductController@getCreate')->name('createitem');
-Route::post('createitem','ProductController@storeItem')->name('storeitem');
-Route::get('/productdetails','ProductController@show');
+Route::get('/createitem','ProductController@getCreate')->name('createitem');
+Route::post('/createitem','ProductController@storeItem')->name('storeitem');
+Route::get('/item/{id}','ProductController@show')->name('item');
 
 
 // auction routes
-Route::get('/auctiondetails','AuctionProductController@index');
-Route::get('/createauction','AuctionProductController@create');
-
+Route::post('bid','BidController@postData')->name('update');
+Route::get('/createauction','AuctionProductController@getCreate');
+Route::post('/createauction','AuctionProductController@storeItem')->name('store');
+Route::get('/auction/{id}','AuctionProductController@show')->name('auctiondetails');
 
 //profile routes 
 Route::get('/editprofile','ProfileController@edit');
