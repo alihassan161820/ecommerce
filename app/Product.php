@@ -11,9 +11,33 @@ use App\ItemPhoto;
 class Product extends Model
 {       
      protected $dates = ['created_at', 'updated_at'];
-
-     protected $table = 'products';
+     public $primarykey = 'id';
+    // protected $table = 'products';
      protected $fillable =['product_id','Name, Description, Price, SubCategoryID, Units, ItemRate, subcategory_id'];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function item_photos()
+    {
+        return $this->hasMany(ItemsPhoto::class);
+    }
+
+    public function auction()
+    {
+        return $this->belongsTo(Auction::class);
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+
+
+
+
         
      public function itemPhotos(){
             return $this->hasMany(ItemPhoto::class);

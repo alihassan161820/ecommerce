@@ -180,6 +180,7 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
         TCG\Voyager\VoyagerServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class,
 
 
 
@@ -234,6 +235,8 @@ return [
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
         'Search' => AdvanceSearch\AdvanceSearchProvider\Facades\SearchFacades::class,
+        'Image' => Intervention\Image\Facades\Image::class,
+
     ],
 
 ];

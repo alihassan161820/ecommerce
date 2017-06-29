@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "b06747adea6050a0ace192c8927fea7e",
+    "content-hash": "3c190d4f21a9525d184c44faa724cc1f",
     "packages": [
         {
             "name": "5dmatwebsearch/advancesearch",
@@ -2697,7 +2697,7 @@
         },
         {
             "name": "tcg/voyager",
-            "version": "v0.11.12",
+            "version": "v0.11.14",
             "source": {
                 "type": "git",
                 "url": "https://github.com/the-control-group/voyager.git",

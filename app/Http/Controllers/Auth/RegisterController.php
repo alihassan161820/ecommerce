@@ -5,67 +5,81 @@ namespace App\Http\Controllers\Auth;
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Input;
+
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Session;
+use Mail;
 
 class RegisterController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Register Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles the registration of new users as well as their
-    | validation and creation. By default this controller uses a trait to
-    | provide this functionality without requiring any additional code.
-    |
-    */
+    
 
     use RegistersUsers;
 
-    /**
-     * Where to redirect users after registration.
-     *
-     * @var string
-     */
+   
     protected $redirectTo = '/home';
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
+  
     public function __construct()
     {
         $this->middleware('guest');
     }
 
-    /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
+  
     protected function validator(array $data)
     {
+
         return Validator::make($data, [
-            'name' => 'required|string|max:255',
+           'firstname' => 'required|string|max:255',
+            'lastname' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
+            'password' => 'required|min:6',
+            'password-confirm' => 'required|same:password',
+
+            
         ]);
     }
 
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return User
-     */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
+         $gender = Input::get('gender') == 'Male' ? 1 : 0;
+
+         
+      Session::flash('status','Registered! but verify your email to activate your account');
+        $user = User::create([
+            'firstname' => $data['firstname'],
+            'lastname' => $data['lastname'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            'token' => str_random(25),
+            'gender' => $gender
         ]);
+         
+        $thisUser = User::findOrFail($user->id);
+            
+        $this->sendEmail($thisUser);
+
+        return $user;
+    }
+    public function sendEmail($thisUser)
+    {
+       //dd('ana hna');
+        Mail::to($thisUser['email'])->send(new verifyEmail($thisUser));
+    }
+
+    public function sendEmailDone($email,$token)
+    {
+        $user =User::where(['email' =>$email , 'token' => $token])->first();
+       $state;
+
+        if($user)
+        {
+            
+             $con_user = user::where(['email'=> $email, 'token' => $token])->update(['confirmed'=>'1' , 'token'=>null]);
+                 Auth::login($user);
+             return view('auth.password.mails.successmails.success',['con_user' => $con_user,'state' => true]);
+        }
+        return view('auth.password.mails.success',['state' => false]);
     }
 }

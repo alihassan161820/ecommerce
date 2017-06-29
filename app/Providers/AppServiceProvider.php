@@ -26,6 +26,7 @@ class AppServiceProvider extends ServiceProvider
          view()->composer('website.layouts.middleHeader',function($view){
                 $view->with('cities',config('constant.cities'));
          });
+         
 
     }
 
