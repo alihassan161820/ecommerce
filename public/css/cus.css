@@ -49,11 +49,13 @@
         background-clip: padding-box;
     }
     .select2-container--default .select2-selection--single .select2-selection__arrow b {
-    left: -30%;
+    left: 93%;
+    top: 63%
     }
     .seach-box {
-        left: 422px;
-        margin-top: 14px;
+
+    left: 379px;
+    margin-top: 14px;
     }
     
     .search-btn {
@@ -64,17 +66,6 @@
         font-weight: 700;
     }
     
-    .search-box-input {
-        background-color: #fff;
-        border: 1px solid #aaa;
-        border-radius: 4px;
-        width: 139px;
-        padding: 2.6px 0px;
-        padding-left: 9px;
-        margin-right: 6px;
-        padding-right: 7px;
-        width: 161px;
-    }
     
     .panel-body {
         font-size: 1.4em
@@ -117,6 +108,8 @@
         right: 88px;
         padding-bottom: 9px;
         padding-top: 60px;
+            margin-top: -3%;
+
     }
     
     .section-heading {
@@ -158,62 +151,7 @@
     .fav-price {
         padding-top: 44px;
     }
-    /*count down timer*/
-
-    .clockdiv {
-        font-family: sans-serif;
-        color: #000;
-        display: inline-block;
-        font-weight: 100;
-        text-align: center;
-        font-size: 12px;
-        height: 70px;
-        padding: 0 12%;
-    }
-    
-    .clockdiv>div {
-        padding: 6px 7px;
-        background: #104e8e;
-        display: inline-block;
-            border-radius: 4px;
-
-    }
-    
-    .clockdiv div>span {
-        padding: 3px 5px;
-        border-radius: 3px;
-        background: #f0f0e9;
-        display: inline-block;
-    }
-    
-    .smalltext {
-        padding-top: 2px;
-        font-size: 8px;
-        color: white;
-    }
-    
-    .single-products {
-        height: 305px;
-    }
-    
-    .days,
-    .hours,
-    .minutes,
-    .seconds {
-        min-width: 22px;
-    }
-
-    .clockdiv{
-        display: none;
-    }
-
-    .sold-out-img{
-            position: absolute;
-             top: 205px;
-
-    }
-
-/*end*/
+   
 
 .product-image-wrapper {
     width: 111%;
@@ -305,15 +243,286 @@ h2.title {
 }
     /*opensans,"Helvetica Neue",Helvetica,Helvetica,Arial,sans-serif*/
 
-.clockdiv2>div {
+
+
+/*main-search*/
+.main-search{
+    margin-top: 245px;
+    color: #fff !important;
+    position: relative;
+    z-index: 0;
+    background: rgba(0, 0, 0, 0) url('/images/home/xxxxxx.jpg') no-repeat scroll center center / cover;
+}
+.search-title{
+    padding-top:140px;
+}
+
+.search-content{
+    margin: 0 9%;
+}
+
+.create-auc-btn{
+    font-size: 1.7em;
+    border: 1px solid #104e8e;
+    background: rgba(16, 78, 142, 0.6);
+    padding: 19px 33px;
+    opacity: 0.8;
+    color: white;
+    margin-right: 39px;
+}
+.create-auc-btn:hover ,
+.create-free-btn:hover{
+    background: #ddd;
+    color: #104e8e;
+    margin-right: 39px;
+}
+.create-free-btn{
+    font-size: 1.7em;
+    border: 1px solid #104e8e;
+    background: rgba(16, 78, 142, 0.6);
+    padding: 19px 33px;
+    opacity: 0.8;
+    color: white;
+    margin-left: 39px;
+}
+.main-a{
+        margin: 85px 20% 0 25%;
+        width:60%;
+}
+
+.search-query{
+    padding-left: 18px; 
+}
+/*new*/
+
+.search-btn {
+    font-size: 15px;
+    font-weight: 400;
+        margin-left: -21px;
+
+}
+
+.select2-container{
+    width: 144px;
+    left: -9px;
+    margin-right: 20px
+}
+
+.search-box-input {
+    background-color: #fff;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    padding: 5.6px 0px;
+    padding-left: 9px;
+    margin-right: 6px;
+    padding-right: 7px;
+    width: 194px;
+}
+
+
+.select2-container .select2-selection--single {
+    height: 34px;
+        width: 164px;
+
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    line-height: 34px;
+}
+
+.logo{
+        margin-left: -64px;
+}
+
+.item-imgs{
+    max-height: 172px;
+    margin: auto;
+    width: 236px;
+    min-height: 172px;
+
+}
+
+/*footer*/
+#footer{
+    padding-bottom: 0;
+}
+.footer-widget{
+    margin-bottom: 10px;
+}
+
+.single-widget h2 {
+    color: #104e8e;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+     margin-bottom: 0px; 
+    text-transform: uppercase;
+}
+
+
+.del-btn{
+    float: right;
+    margin-right: 48px;
+    margin-bottom: 20px;
+}
+
+/*clock 1 */
+
+    .clockdiv {
+        font-family: sans-serif;
+        color: #000;
+        display: inline-block;
+        font-weight: 100;
+        text-align: center;
+        font-size: 12px;
+        height: 70px;
+        padding: 0 12%;
+    }
+    
+    .clockdiv>div {
+        padding: 6px 7px;
+        display: inline-block;
+        border-radius: 4px;
+
+    }
+    
+    .clockdiv2>div {
+    padding: 5px 4px;
+    display: inline-block;
+    border-radius: 4px;}
+
+    .clockdiv2 div>span {
+    padding: 2px 0px;
+    border-radius: 3px;
+    background: #f0f0e9;
+    display: inline-block;
+    }
+
+    .clockdiv div>span {
+        padding: 3px 5px;
+        border-radius: 3px;
+        display: inline-block;
+    }
+
+    .single-products {
+        height: 305px;
+    }
+    
+    .days,
+    .hours,
+    .minutes,
+    .seconds {
+        min-width: 22px;
+    }
+
+    .clockdiv{
+        display: none;
+    }
+
+    .sold-out-img{
+            position: absolute;
+             top: 205px;
+
+    }
+
+.clockdiv{
+    display: inherit;
+    padding: 0;
+    font-size: 0.96em;
+    font-weight: 600;
+}
+
+/*clock2*/
+/*count down timer*/
+    /*.clockdiv {
+        font-family: 'El Messiri', sans-serif;
+        color: #000;
+        display: inline-block;
+        font-weight: 100;
+        text-align: center;
+        font-size: 12px;
+        height: 70px;
+    }
+    
+    .clockdiv>div {
+        padding: 6px 7px;
+        background: #104e8e;
+        color: white;
+        display: inline-block;
+        border-radius: 4px;
+
+    }
+    
+    .clockdiv3>div {
     padding: 5px 4px;
     background: #104e8e;
     display: inline-block;
     border-radius: 4px;}
 
-.clockdiv2 div>span {
+    .clockdiv3 div>span {
     padding: 2px 0px;
     border-radius: 3px;
-    background: #f0f0e9;
     display: inline-block;
-}
+    }
+
+    .clockdiv div>span {
+        padding: 3px 5px;
+        border-radius: 3px;
+        display: inline-block;
+    }
+
+    .single-products {
+        height: 305px;
+    }
+    
+    .days,
+    .hours,
+    .minutes,
+    .seconds {
+        min-width: 22px;
+    }
+
+    .clockdiv{
+        display: none;
+        width:103%;
+    }
+
+    .sold-out-img{
+            position: absolute;
+             top: 205px;
+
+    }
+    
+    .clockdiv{
+        font-size:1.25em;
+    }
+
+
+    .logo-imgs{
+        min-width: 50px;
+            height: 64px;
+
+    } */
+
+
+
+
+
+    .clockdiv4{
+        margin-bottom: 30px;
+    }
+
+    .clockdiv4>div {
+    color:white;
+    font-size: 1.9em;
+    padding: 0px 4px;
+    min-width: 63px;
+    background: #104e8e;
+    display: inline-block;
+    border-radius: 4px;}
+
+    .clockdiv4 div>span {
+    padding: 2px 0px;
+    border-radius: 3px;
+    display: inline-block;
+    }

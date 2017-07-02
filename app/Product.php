@@ -7,7 +7,7 @@ use App\Categorry;
 use App\Subcategory;
 use App\ItemPhoto;
 use App\Auction;
-
+use Carbon\Carbon;
 class Product extends Model
 {       
      protected $dates = ['created_at', 'updated_at'];
@@ -88,13 +88,23 @@ class Product extends Model
 
     public static function getAuctions()
     {
-        return Product::join('auction','auction.id','=','products.id')
-                                     ->where('products.auction_id','!=','NULL')
+        return Product::join('auction','auction.id','=','products.auction_id')
                                      ->join('itemphotos','products.id','=','itemphotos.product_id')
                                      ->select('auction.*','products.Name','products.created_at','products.City','products.id','itemphotos.*')
                                      ->get();
     }
 
+    public static function getHotAuctions()
+    {
+        return Product::join('auction','auction.id','=','products.auction_id')
+                                ->join('itemphotos','products.id','=','itemphotos.product_id')
+                                ->where('products.auction_id','!=','NULL')
+                                ->select('products.Price','products.Name','products.created_at','products.City','products.id','products.auction_id','itemphotos.*')
+                                ->where('auction.EndTime','>',Carbon::now()->addMinute(30))  
+                                ->orderBy('auction.EndTime','DESC')
+                                ->get();
+
+    }
 
 
 }

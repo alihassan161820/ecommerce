@@ -1,58 +1,31 @@
-			<div class="row">		
+		<section class="main-search">
+			<div class="row" style="padding-bottom:9%">		
 			<div class="col-sm-12">
-					<div id="slider-carousel" class="carousel slide" data-ride="carousel">
-						<ol class="carousel-indicators">
-							<li data-target="#slider-carousel" data-slide-to="0" class="active"></li>
-							<li data-target="#slider-carousel" data-slide-to="1"></li>
-							<li data-target="#slider-carousel" data-slide-to="2"></li>
-						</ol>
-						
-						<div class="carousel-inner">
-							<div class="item active">
-								<div class="col-sm-6">
-									<h1><span>1</span> - Alla Tre</h1>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-									<button type="button" class="btn btn-default get">Get it now</button>
-								</div>
-								<div class="col-sm-6">
-									<img src="{{ Request::root() }}/images/home/img01.jpg" class="img img-responsive" alt="" />
-									<img src="{{ Request::root() }}/images/home/price3.gif"  class="pricing" alt="" />
-								</div>
-							</div>
-							<div class="item">
-								<div class="col-sm-6">
-									<h1 style="font-family:Roboto, sans-serif"><span>2</span> - Alla Tre</h1>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-									<button type="button" class="btn btn-default get">Get it now</button>
-								</div>
-								<div class="col-sm-6">
-									<img src="{{ Request::root() }}/images/home/img01.jpg" class="img img-responsive" alt="" />
-									<img src="{{ Request::root() }}/images/home/price3.gif"  class="pricing" alt="" />
-								</div>
-							</div>
+				<div class="search-content">
+						<div class="search-title">
+							<h1 style="font-size:4em">Alla tre changes the way you shop</h1>
+							<h2 style="color:white">Buy and Sell Whatever Your Want?</h2>
+							@if(!$latestProds->isEmpty())
+							<p>Search in <strong>{{$productcount}}</strong> new ads and <strong>{{$auctioncount}}</strong> auctions . </p>
+							@endif
+							<p>Alla tre  offers online auctions, allowing you to buy products in a playful and innovative way while saving money
+							.To know how you can participate to our bid <br> please consult our <a href="{{Request::root()}}/help">Help</a> section
+
+							</p>
+
+
+							<div class="main-a">
+
+								<a class="create-auc-btn" href="{{Request::root()}}/createauction">Create Auction</a>
+								<a class="create-free-btn" href="{{Request::root()}}/ti/hotauctions">Hot Auctions</a>
+
 							
-							<div class="item">
-								<div class="col-sm-6">
-									<h1><span>3</span> - Alla Tre</h1>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-									<button type="button" class="btn btn-default get">Get it now</button>
-								</div>
-								<div class="col-sm-6">
-									<img src="{{ Request::root() }}/images/home/img01.jpg" class="img img-responsive" alt="" />
-									<img src="{{ Request::root() }}/images/home/price3.gif" class="pricing" alt="" />
-								</div>
 							</div>
+			
+						</div>			
+
+				</div>
 							
-						</div>
-						
-						<a href="#slider-carousel" class="left control-carousel hidden-xs" data-slide="prev">
-							<i class="fa fa-angle-left"></i>
-						</a>
-						<a href="#slider-carousel" class="right control-carousel hidden-xs" data-slide="next">
-							<i class="fa fa-angle-right"></i>
-						</a>
-					</div>
-					
 				</div>
 		</div>
-		
+		</section>

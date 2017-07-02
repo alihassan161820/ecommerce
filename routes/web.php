@@ -40,11 +40,15 @@ Route::post('/contact','ContactController@store');
 
 // help routes
 Route::get('/help','HelpController@index');
+Route::get('/aboutus','HelpController@index');
+Route::post('/getcategoryitem','ProductController@getCategory');
 
 // products routes
 Route::get('/createitem','ProductController@getCreate')->name('createitem');
 Route::post('/createitem','ProductController@storeItem')->name('storeitem');
 Route::get('/item/{id}','ProductController@show')->name('item');
+Route::post('/deleteitem','ProductController@destroy')->name('deleteitem');
+
 
 
 // auction routes
@@ -52,9 +56,17 @@ Route::post('bid','BidController@postData')->name('update');
 Route::get('/createauction','AuctionProductController@getCreate');
 Route::post('/createauction','AuctionProductController@storeItem')->name('store');
 Route::get('/auction/{id}','AuctionProductController@show')->name('auctiondetails');
+Route::post('/deleteauction','AuctionProductController@destroy')->name('deleteauction');
+Route::post('/confirm','AuctionProductController@confirmation');
+Route::post('/getcategory','AuctionProductController@getCategory');
+
 
 //profile routes 
 Route::get('/editprofile','ProfileController@edit');
 Route::post('/updateprofile','ProfileController@update');
 Route::get('/profile','ProfileController@index')->name('profile');
 
+Route::post('/subscripe',function(){
+    Flashy::primary('Thanks for subscribing to our newsfeed!', '/home');
+    return Redirect::home();
+});

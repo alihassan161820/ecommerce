@@ -20,10 +20,10 @@ class FilteredProduectController extends Controller
                 $products = Product::latestProds();
                  if (Auth::check()){
                         $favorites = Favorite::favoriteProducts(Auth::user()->id);
-                        return view('website.filtered-products',compact('products','favorites'));            
+                        return view('website.filtered-products',compact('products','favorites','product'));            
                 }
                 else{
-                        return view('website.filtered-products',compact('products'));            
+                        return view('website.filtered-products',compact('products','product'));            
                 }              
         }
         //ads/car
@@ -41,11 +41,11 @@ class FilteredProduectController extends Controller
                          ->get();
                 if (Auth::check()){
                 $favorites = Favorite::favoriteProducts(Auth::user()->id);
-                return view('website.filtered-products-adv',compact('products','favorites'));       
+                return view('website.filtered-products-adv',compact('products','favorites','product'));       
                 // return dd($products);
                 }
                 else{
-                        return view('website.filtered-products-adv',compact('products'));            
+                        return view('website.filtered-products-adv',compact('products','product'));            
                 }           
         }
         
@@ -53,10 +53,10 @@ class FilteredProduectController extends Controller
                 $products = Product::getProductByCity($city);
                 if (Auth::check()){
                         $favorites = Favorite::favoriteProducts(Auth::user()->id);
-                        return view('website.filtered-products',compact('products','favorites'));            
+                        return view('website.filtered-products',compact('products','favorites','product'));            
                 }
                 else{
-                          return view('website.filtered-products',compact('products'));            
+                          return view('website.filtered-products',compact('products','product'));            
                 }      
           }
         else {
@@ -74,36 +74,37 @@ class FilteredProduectController extends Controller
                         ->get();
                  if (Auth::check()){
                 $favorites = Favorite::favoriteProducts(Auth::user()->id);
-                return view('website.filtered-products-adv',compact('products','favorites'));       
+                return view('website.filtered-products-adv',compact('products','favorites','product'));       
                 }
                 else{
-                        return view('website.filtered-products-adv',compact('products'));            
+                        return view('website.filtered-products-adv',compact('products','product'));            
                 }              
         }
     }
 
     public function showProductsByCategory($category,$subcategory=null){
         if($subcategory!=null){
+                $product = $subcategory;
                 $products =  Product::getProductBySubcategory($subcategory);                
                 if (Auth::check()){
                         $favorites = Favorite::favoriteProducts(Auth::user()->id);
-                        return view('website.filtered-products',compact('products','favorites'));            
+                        return view('website.filtered-products',compact('products','favorites','product'));            
                 }
                 else{
-                          return view('website.filtered-products',compact('products'));            
+                          return view('website.filtered-products',compact('products','product'));            
                 }
         }       
 
         else
-        {
+        {       $product = $category;
                 $products =  Product::getProductByCategory($category);
                  if (Auth::check()){
                         $favorites = Favorite::favoriteProducts(Auth::user()->id);
                         // dd($products);
-                        return view('website.filtered-products-adv',compact('products','favorites'));            
+                        return view('website.filtered-products-adv',compact('products','favorites','product'));            
                 }
                 else{
-                          return view('website.filtered-products-adv',compact('products'));            
+                          return view('website.filtered-products-adv',compact('products','product'));            
                 }
         }
     }
@@ -111,29 +112,39 @@ class FilteredProduectController extends Controller
     public function get($cat=""){
           
             if($cat=="latestProds"){       
-                $products = Product::latestProds();          
+                $products = Product::latestProds();   
+                $product = 'Latest Ads' ;
                 if (Auth::check()){
                         $favorites = Favorite::favoriteProducts(Auth::user()->id);
-                        return view('website.filtered-products',compact('products','favorites'));            
+                        return view('website.filtered-products',compact('products','favorites','product'));            
                 }
                 else{
-                          return view('website.filtered-products',compact('products'));            
+                          return view('website.filtered-products',compact('products','product'));            
                 }
             }
 
             if($cat=="featuredProds"){
                 $products = Product::featuredProds();
+                $product = 'Featured Ads';
                 if (Auth::check()){
                         $favorites = Favorite::favoriteProducts(Auth::user()->id);
-                        return view('website.filtered-products',compact('products','favorites'));            
+                        return view('website.filtered-products',compact('products','favorites','product'));            
                 }
                 else{
-                        return view('website.filtered-products',compact('products'));            
+                        return view('website.filtered-products',compact('products','product'));            
                 }           
             }
 
-            if($cat=="hotAuctions"){
-                    
+            if($cat=="hotauctions"){
+                    $product = 'Hot Auctions';
+                $products = Product::getHotAuctions();
+                if (Auth::check()){
+                        $favorites = Favorite::favoriteProducts(Auth::user()->id);
+                        return view('website.filtered-products',compact('products','favorites','product'));            
+                }
+                else{
+                        return view('website.filtered-products',compact('products','product'));            
+                }    
             }
     }
 }

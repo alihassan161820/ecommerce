@@ -5,18 +5,21 @@ Ads
 @section('container')
 	<div class="container">
 			<div class="row">
-				<div class="col-sm-12 padding-right">
+			@include('website.layouts.left-sidebar')									
+				<div class="col-sm-9 padding-right" style="margin-top:2px">
 					<div class="features_items"><!--features_items-->
-					<br>
-					<br>
-						<h2 class="title text-center ">Ads</h2>
+					@if(!is_null($product))
+			<span><h4 class="search-query">{{$product}}  ({{$products->count()}}) Ads found</></h4></span>
+					@endif
+
+			
 							@if(!$products->isEmpty())
 										@foreach($products as $product)
-												<div class="col-md-2">
+												<div class="col-md-3">
 														<div class="product-image-wrapper">
 															<div class="single-products">
 																	<div class="productinfo text-center">
-																		<img class="img-responsive" src="{{Storage::disk('local')->url($product->Photos) }}" alt="">
+																		<img class="img-responsive item-imgs" src="{{asset('product_image/' . $product->Photos) }}" alt="">
 																		<p>{{$product->Name}} </p>	
 																		@if($product->Price)
 																		<h2>{{$product->Price}} <span style="font-size:18px">EGP</span></h2>
@@ -26,23 +29,22 @@ Ads
 																	<input type="hidden" class="bid-amount" name="bid-amount" id="{{$product->auction_id}}">																	
 																	<input type="hidden" name="_token" value="{{ csrf_token() }}">
 																	<h2 class="auction-bid" id="bid-amount-{{$product->auction_id}}">{{$product->Amount}}</h2>
-																	<div class="clockdiv clockdiv2" id="clockdiv{{$product->auction_id}}"data-value="{{$product->auction_id}}">
+																	<div class="clockdiv clockdiv3" id="clockdiv{{$product->auction_id}}"data-value="{{$product->auction_id}}">
   																		<input type="hidden" class="endtime endtime{{$product->auction_id}}" name="auction-end-time" value="{{$product->EndTime}}">
+																		<!--<div>
+																			<span class="timecount"></span>
+																		</div>-->
 																		<div>
 																			<span class="days days2"></span>
-																			<div class="smalltext">Days</div>
 																		</div>
 																		<div>
 																			<span class="hours hours2"></span>
-																			<div class="smalltext">Hours</div>
 																		</div>
 																		<div>
 																			<span class="minutes minutes2"></span>
-																			<div class="smalltext">Minutes</div>
 																		</div>
 																		<div>
 																			<span class="seconds seconds2"></span>
-																			<div class="smalltext">Seconds</div>
 																		</div>
 																	</div>
 																	<div class="sold-out-img" id="clockdiv{{$product->auction_id}}-img">
@@ -74,8 +76,11 @@ Ads
 															</div>
 															<div class="choose choose-plus">
 																<ul class="nav nav-pills nav-justified">
-																	<li><a href="Product Details.html"><i class="fa "></i>Product Details</a></li>
-																</ul>
+																	@if($product->auction_id)																	
+																	<li><a href="{{Request::root()}}/auction/{{$product->auction_id}}"><i class="fa "></i>Auction Details</a></li>
+																	@else
+																	<li><a href="{{Request::root()}}/item/{{$product->product_id}}"><i class="fa "></i>Product Details</a></li>
+																	@endif																</ul>
 															</div>
 														</div>
 													</div>
@@ -89,9 +94,12 @@ Ads
 					</div><!--features_items-->
 			</div>
 		</div>
+		</div>
 @endsection
 
 @section('script')
       {!! Html::script('js/counter-update.js') !!}      
-            {!! Html::script('js/downcount.js') !!}
+            <!--{!! Html::script('js/downcount.js') !!}-->
+				{!! Html::script('js/downcount2.js') !!}
+
 @endsection

@@ -25,8 +25,8 @@
 								</li>
 								<li><a href="{{ Request::root() }}" class="">Home</a></li>
 								<li><a href="{{ Request::root() }}/contact">Contact</a></li>
-								<li><a href="{{ Request::root() }}/help">Help</a></li>
-							
+								<li><a href="{{ Request::root() }}/help">About us</a></li>
+								<li><a href="{{ Request::root() }}/aboutus">Help</a></li>
 							</ul>
 						</div>
 					

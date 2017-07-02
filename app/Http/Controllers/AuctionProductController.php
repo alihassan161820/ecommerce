@@ -18,16 +18,15 @@ use App\ItemPhoto;
 use Illuminate\Support\Facades\Input;
 use Intervention\Image\ImageManagerStatic as Image;
 use Storage;
+use App\Subcategory;
+use Response;
 
 class AuctionProductController extends Controller
 {
    public function __construct()
 {
    
-       $this->middleware('auth' , ['execpt' => 'show']);
-    
-       return redirect('/login');    
-
+  
 }
     
     public function getCreate()
@@ -61,34 +60,42 @@ class AuctionProductController extends Controller
         $this->validate($request,[
              'name' => 'required',
              'description' => 'required',
-             'city' => 'required',    
+             'city' => 'required',
+             'category' => 'required', 
+             'subcategory' => 'required', 
              'units' => 'required|numeric|min:0',
              'starting_price' => 'required|numeric|min:0.00',
              'buy_now_price' => 'required|numeric|min:0.00',
-             'target_price' => 'required|numeric|min:0.00',
-             'end_time' => 'required'
+             'target_price' => 'required|numeric|min:0.00'
+             
              ]);
 
+
+      $period = Input::get('period');
+      $cat = Input::get('city');
+    
+
+
       $auc =new Auction();
-      // $auc->creator_id =auth()->id();
-      // $auc->creator_id = Auth::user()->id;
       $auc->StartingPrice =$request['starting_price'];
-      $auc->period =$request['period'];
       $auc->BuyNow =$request['buy_now_price'];
-      $auc->creator_id =3;
+      $auc->creator_id = Auth::user()->id;
       $auc->TargetPrice =$request['target_price'];
-      $auc->EndTime =$request['end_time'];
+      $auc->EndTime =$period;
       $auc->save();
 
-      $con = Input::get('condition') == 'used' ? 'Used' : 'New';
+      $con = Input::get('condition') == 'used' ? 'used' : 'new';
       $item = new Product();
-      $item->name =$request['name'];
-       $item->condition = $con;
-      $item->city =$request['city'];
-      $item->description =$request['description'];
-      $item->units =$request['units'];
+      $item->Name =$request['name'];
+      $item->seller_id = Auth::user()->id;
+      $item->condition = $con;
+      $item->subcategory_id = $request['subcategory'];
+      $item->City =$request['city'];
+      $item->Description =$request['description'];
+      $item->Units =$request['units'];
       $item->auction_id = $auc->id;
       $item->save();
+
 
     $itemphoto = new ItemPhoto();
 
@@ -131,6 +138,11 @@ $itemphoto = new ItemPhoto();
               'item_photos' => $item_photos
 
               ]);
+              $bid = new Bid;
+              $bid->users_id = Auth::user()->id;
+              $bid->Amount = $auc->StartingPrice;
+              $bid->auction_id = $auc->id;
+              $bid->save(); 
           
 //bhot data product fe session 
   
@@ -150,21 +162,33 @@ $itemphoto = new ItemPhoto();
         $item_photos = ItemPhoto::where('product_id',$product->id)->get();
         $bids = Bid::where('auction_id',$auction->id)->get()->first();
 
+        $similarPhoto;
+        $similarProducts="";
+        $similarProducts = Product::where('subcategory_id',$product->subcategory_id)->get();
+        // if(!$similarProducts->isEmpty()){
+        //     foreach($similarProducts as $similarProduct){
+        //         $similarPhoto = ItemPhoto::where('product_id',$similarProduct->id)->get()->first();
+                
+        //         Session([$similarProduct->id => $similarPhoto->Photos]);
+        //     }
+        // }
+
           if($bids){
-            session(['bidUserID' => $bids->UserID]);
+            session(['bidUserID' => $bids->users_id]);
             // if($bids->clicks == 2){
             //  session(['activate' => false]);
             // }
           }
-       
-    
-       return view('website.auction-details' , compact('auction' ,'product','item_photos','bids'));
+     
+          //dd($bids->clicks);
+
+       return view('website.auction-details' , compact('auction' ,'product','item_photos','bids' ,'similarProducts' ,'similarPhoto'));
         
     }
 
     public function edit($id)
     {
-        //
+        
     }
 
   
@@ -174,8 +198,37 @@ $itemphoto = new ItemPhoto();
     }
 
     
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+     
+       $auction_id = $request['auction_id'];
+       $product = Product::where('auction_id' , $auction_id)->get()->first();
+       $bid  = Bid::where('auction_id' , $auction_id)->delete();
+       $auction = Auction::find($auction_id)->delete();
+       $photo = ItemPhoto::where('product_id', $product->id)->delete();
+       $product = Product::where('auction_id' , $auction_id)->delete(); 
+
+       
+
+
+        return redirect('/');
+        // Redirect::route('home');
+
+
+    }
+     public function confirmation(Request $request){
+     
+      $confirm = Auction::where('id',$request['auction_id'])
+                                                            ->update(['confirmation' => 1]);
+
+          return redirect('auction/' . $request['auction_id']);
+    }
+    public function getCategory(Request $request)
+    {
+          if ($request->ajax()) {
+       $cat_id = Input::get('cat_id');
+           $subcategory = Subcategory::where('categorry_id','=',$cat_id)->get();
+            return Response::json(['success' => json_encode($subcategory)], 200);
+    }
     }
 }

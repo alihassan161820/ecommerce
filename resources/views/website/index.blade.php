@@ -20,11 +20,13 @@ Home
 
 @endsection
 @section('container')
+	@include('website.layouts.slider')
+
+<section>
 	<div class="container">
 			<div class="row">
 			<br>
 			<br>
-				@include('website.layouts.slider')
 				@include('website.layouts.about-us')
 				@include('website.layouts.left-sidebar')
 		
@@ -38,7 +40,7 @@ Home
 														<div class="product-image-wrapper">
 															<div class="single-products">
 																	<div class="productinfo text-center">
-																		<img class="img-responsive" src="{{Storage::disk('local')->url($product->Photos) }}" alt="">
+																		<img class="img-responsive item-imgs" src="{{asset('product_image/' . $product->Photos) }}" alt="">
 																		<p>{{$product->Name}} </p>	
 																		@if($product->Price)
 																		<h2>{{$product->Price}} <span style="font-size:18px">EGP</span></h2>
@@ -53,28 +55,30 @@ Home
 																	<div class="clockdiv" id="clockdiv{{$product->auction->id}}"data-value="{{$product->auction->id}}">
   																		<input type="hidden" class="endtime endtime{{$product->auction->id}}" name="auction-end-time" value="{{$product->auction->EndTime}}">
 																		<div>
+																			<span class="timecount"></span>
+																		</div>
+																		<!--<div>
 																			<span class="days"></span>
-																			<div class="smalltext">Days</div>
+																			
 																		</div>
 																		<div>
 																			<span class="hours"></span>
-																			<div class="smalltext">Hours</div>
 																		</div>
 																		<div>
 																			<span class="minutes"></span>
-																			<div class="smalltext">Minutes</div>
 																		</div>
 																		<div>
 																			<span class="seconds"></span>
-																			<div class="smalltext">Seconds</div>
-																		</div>
+																		</div>-->
 																	</div>
 																	<div class="sold-out-img" id="clockdiv{{$product->auction->id}}-img">
 																	</div>
 																	@endif
 																	<div class="product-overlay">
 																		<div class="overlay-content">
+																			@if(!$product->auction)
 																			<h2>{{$product->Price}} <span style="font-size:18px">EGP</span></h2>
+																			@endif
 																			<p>{{$product->Name}} </p>
 																			<input type="hidden" name="_token" value="{{ csrf_token() }}">
 																			   @if(Auth::check())
@@ -98,7 +102,11 @@ Home
 															</div>
 															<div class="choose choose-plus">
 																<ul class="nav nav-pills nav-justified">
-																	<li><a href="Product Details.html"><i class="fa "></i>Product Details</a></li>
+																	@if($product->auction)																	
+																	<li><a href="{{Request::root()}}/auction/{{$product->auction->id}}"><i class="fa "></i>Auction Details</a></li>
+																	@else
+																	<li><a href="{{Request::root()}}/item/{{$product->id}}"><i class="fa "></i>Product Details</a></li>
+																	@endif
 																</ul>
 															</div>
 														</div>
@@ -107,38 +115,20 @@ Home
 								@endif
 					</div><!--features_items-->
 					</div>
-					<div class="col-sm-12" style="margin-top:20px">					
+					<div class="col-sm-12" style="margin-top:100px">					
 					<div class="category-tab"><!--category-tab-->
 						<div class="col-sm-12">
 							<ul class="nav nav-tabs">
-								<li class="active"><a href="#catch-deal" data-toggle="tab">Catch a deal</a></li>
-								<li><a href="#Electronics" data-toggle="tab">Electronics</a></li>
+								<li class="active"><a href="#Electronics" data-toggle="tab">Electronics</a></li>
 								<li><a href="#cars" data-toggle="tab">Vehicles</a></li>
 								<li><a href="#mobile" data-toggle="tab">Mobile Phones & Accessories</a></li>
 								<li><a href="#poloshirt" data-toggle="tab">recommended</a></li>
 							</ul>
 						</div>
 						<div class="tab-content">
-							<div class="tab-pane fade active in" id="catch-deal" >
-									<div class="main-tap-img co-md-4">
-										<a href="{{url('')}}">
-											<img src="images/home/rsz_hotauction.jpg" class=" img-responsive" alt="" />
-											<h4>Hot Auctions</h4>
-										</a>
-									</div>
-										<div class=" col-md-6">
-										<a href="{{url('/createauction')}}">
-											<img src="images/home/auc3.jpg" style="max-width: 96%"class=" img-responsive" alt="" />
-											<h4 class="" >Create Auction</h4>
-										</a>
-											<a href="{{url('/createitem')}}">
-											<img src="images/home/createfree.jpg" class=" img-responsive" alt="" />
-											<h4  class="">Create free Ad</h4>
-									</div>	
+					
 							
-							</div>
-							
-							<div class="tab-pane fade" id="Electronics" >
+							<div class="tab-pane fade active in" id="Electronics" >
 									<div class="main-tap-img co-md-4">
 										<a href="{{url('/c/Electronics/Laptop Computers')}}">
 											<img src="images/home/rsz_laptops.jpg" class=" img-responsive" alt="" />
@@ -219,7 +209,7 @@ Home
 				<div class="row">
 					<div class="col-sm-9">
 							<div class="pro ">
-							<img src="images/home/pro5.jpg" alt="" />
+							<img style="padding-left:35px" src="images/home/rsz_xxx.jpg" alt="" />
 						</div>
 						</div>
 						<div class="col-sm-3">
@@ -228,11 +218,120 @@ Home
 						</div>
 					</div>
 				</div>
+				<div class="row">
+					<div class="col-sm-12">
+										<div class=" col-md-1 logo-div" style="margin-left:45px">
+										<a href="{{url('#')}}">
+											<img class="logo-imgs" src="images/logo/1.png" style="max-width: 100%"class=" img-responsive" alt="" />
+											<img class="logo-imgs" src="images/logo/2.png" style="max-width: 100%"class=" img-responsive" alt="" />
+											<img class="logo-imgs"  src="images/logo/3.png" style="max-width: 100%"class=" img-responsive" alt="" />
+											<img class="logo-imgs"  src="images/logo/4.jpg" style="max-width: 100%"class=" img-responsive" alt="" />
+											<img class="logo-imgs"  src="images/logo/5.png" style="max-width: 100%"class=" img-responsive" alt="" />
+										</a>
+									</div>	
+									<div class="col-md-1 logo-div">
+										<a href="#">
+											<img class="logo-imgs"  src="images/logo/6.jpg" style="max-width: 100%"class=" img-responsive" alt="" />
+											<img class="logo-imgs"  src="images/logo/7.jpg" style="max-width: 100%"class=" img-responsive" alt="" />
+											<img class="logo-imgs"  src="images/logo/8.png" style="max-width: 100%"class=" img-responsive" alt="" />
+											<img class="logo-imgs"  src="images/logo/9.png" style="max-width: 100%"class=" img-responsive" alt="" />
+											<img class="logo-imgs"  src="images/logo/10.jpg" style="max-width: 100%"class=" img-responsive" alt="" />
+				
+										</a>
+									</div>
+										<div class="col-md-1 logo-div">
+										<a href="#">
+											<img class="logo-imgs"  src="images/logo/11.png" style="max-width: 100%"class=" img-responsive" alt="" />
+											<img class="logo-imgs"  src="images/logo/12.png" style="max-width: 100%"class=" img-responsive" alt="" />
+											<img class="logo-imgs"  src="images/logo/13.png" style="max-width: 100%"class=" img-responsive" alt="" />
+											<img class="logo-imgs"  src="images/logo/14.png" style="max-width: 100%"class=" img-responsive" alt="" />
+											<img class="logo-imgs"  src="images/logo/15.jpg" style="max-width: 100%"class=" img-responsive" alt="" />											
+										</a>
+									</div>
+										<div class="col-md-1 logo-div">
+										<a href="#">
+											<img class="logo-imgs"  src="images/logo/16.jpg" style="max-width: 100%"class=" img-responsive" alt="" />
+											<img class="logo-imgs"  src="images/logo/17.png" style="max-width: 100%"class=" img-responsive" alt="" />
+											<img class="logo-imgs"  src="images/logo/18.png" style="max-width: 100%"class=" img-responsive" alt="" />
+											<img class="logo-imgs"  src="images/logo/19.png" style="max-width: 100%"class=" img-responsive" alt="" />
+											<img class="logo-imgs"  src="images/logo/20.png" style="max-width: 100%"class=" img-responsive" alt="" />
+
+										</a>
+									</div>
+										<div class="col-md-1 logo-div">
+										<a href="#">
+											<img class="logo-imgs"  src="images/logo/21.png" style="max-width: 100%"class=" img-responsive" alt="" />
+											<img class="logo-imgs"  src="images/logo/22.png" style="max-width: 100%"class=" img-responsive" alt="" />
+											<img class="logo-imgs"  src="images/logo/36.png" style="max-width: 100%"class=" img-responsive" alt="" />
+											<img class="logo-imgs"  src="images/logo/37.png" style="max-width: 100%"class=" img-responsive" alt="" />
+											<img class="logo-imgs"  src="images/logo/38.png" style="max-width: 100%"class=" img-responsive" alt="" />
+										</a>
+									</div>
+											<div class="col-md-1 logo-div">
+										<a href="#">
+											<img class="logo-imgs"  src="images/logo/25.png" style="max-width: 100%"class=" img-responsive" alt="" />
+											<img class="logo-imgs"  src="images/logo/26.jpg" style="max-width: 100%"class=" img-responsive" alt="" />
+											<img class="logo-imgs"  src="images/logo/28.jpg" style="max-width: 100%"class=" img-responsive" alt="" />
+											<img class="logo-imgs"  src="images/logo/29.png" style="max-width: 100%"class=" img-responsive" alt="" />
+											<img class="logo-imgs"  src="images/logo/30.png" style="max-width: 100%"class=" img-responsive" alt="" />
+										</a>
+									</div>
+											<div class="col-md-1 logo-div">
+										<a href="#">
+											<img class="logo-imgs"  src="images/logo/31.png" style="max-width: 100%"class=" img-responsive" alt="" />
+											<img class="logo-imgs"  src="images/logo/32.png" style="max-width: 100%"class=" img-responsive" alt="" />
+											<img class="logo-imgs"  src="images/logo/33.png" style="max-width: 100%"class=" img-responsive" alt="" />
+											<img class="logo-imgs"  src="images/logo/34.png" style="max-width: 100%"class=" img-responsive" alt="" />
+											<img class="logo-imgs"  src="images/logo/35.png" style="max-width: 100%"class=" img-responsive" alt="" />
+										</a>
+									</div>
+											<div class="col-md-1 logo-div">
+										<a href="#">
+											<img class="logo-imgs"  src="images/logo/39.png" style="max-width: 100%"class=" img-responsive" alt="" />
+											<img class="logo-imgs"  src="images/logo/40.png" style="max-width: 100%"class=" img-responsive" alt="" />
+											<img class="logo-imgs"  src="images/logo/41.png" style="max-width: 100%"class=" img-responsive" alt="" />
+											<img class="logo-imgs"  src="images/logo/42.png" style="max-width: 100%"class=" img-responsive" alt="" />
+											<img class="logo-imgs"  src="images/logo/43.png" style="max-width: 100%"class=" img-responsive" alt="" />
+										</a>
+									</div>
+											<div class="col-md-1 logo-div">
+										<a href="#">
+											<img class="logo-imgs"  src="images/logo/44.png" style="max-width: 100%"class=" img-responsive" alt="" />
+											<img class="logo-imgs"  src="images/logo/45.png" style="max-width: 100%"class=" img-responsive" alt="" />
+											<img class="logo-imgs"  src="images/logo/46.png" style="max-width: 100%"class=" img-responsive" alt="" />
+											<img class="logo-imgs"  src="images/logo/47.png" style="max-width: 100%"class=" img-responsive" alt="" />
+											<img class="logo-imgs"  src="images/logo/48.png" style="max-width: 100%"class=" img-responsive" alt="" />
+										</a>
+									</div>
+
+											<div class="col-md-1 logo-div">
+										<a href="#">
+											<img class="logo-imgs"  src="images/logo/49.png" style="max-width: 100%"class=" img-responsive" alt="" />
+											<img class="logo-imgs"  src="images/logo/50.png" style="max-width: 100%"class=" img-responsive" alt="" />
+											<img class="logo-imgs"  src="images/logo/51.png" style="max-width: 100%"class=" img-responsive" alt="" />
+											<img class="logo-imgs"  src="images/logo/52.png" style="max-width: 100%"class=" img-responsive" alt="" />
+											<img class="logo-imgs"  src="images/logo/53.png" style="max-width: 100%"class=" img-responsive" alt="" />
+										</a>
+									</div>
+									<div class="col-md-1 logo-div">
+										<a href="#">
+											<img class="logo-imgs"  src="images/logo/54.png" style="max-width: 100%"class=" img-responsive" alt="" />
+											<img class="logo-imgs"  src="images/logo/55.png" style="max-width: 100%"class=" img-responsive" alt="" />
+											<img class="logo-imgs"  src="images/logo/56.png" style="max-width: 100%"class=" img-responsive" alt="" />
+											<img class="logo-imgs"  src="images/logo/2.png" style="max-width: 100%"class=" img-responsive" alt="" />
+											<img class="logo-imgs"  src="images/logo/5.png" style="max-width: 100%"class=" img-responsive" alt="" />
+										</a>
+									</div>
+							</div>
+					</div>
+				</div>
 		@include('website.layouts.bottom-slider')
 						</div>
 				</div>
 			</div>
 		</div>
+
+</section>
 @endsection
 
 @section('script')
@@ -251,4 +350,6 @@ Home
 	
     {!! Html::script('js/counter-update.js') !!}      
 	{!! Html::script('js/downcount.js') !!}
+	<!--{!! Html::script('js/downcount2.js') !!}-->
+	
 @endsection

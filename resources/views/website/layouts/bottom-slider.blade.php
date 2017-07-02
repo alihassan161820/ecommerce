@@ -7,30 +7,28 @@
                     @if(!$featuredProds->isEmpty())
                         @foreach($featuredProds as $product)
                                   <div class="item-slider col-md-1">
-                                            <div class="product-image-wrapper">
+                                            <div class="product-image-wrapper"> 
                                                 <div class="single-products">
                                                     <div class="productinfo text-center">
-                                                        <img class="img-responsive" src="{{Storage::disk('local')->url($product->Photos) }}" alt="">
+                                                            <img onclick="location.href='{{Request::root()}}/item/{{$product->id}}'" class="img-responsive item-imgs" src="{{asset('product_image/' . $product->Photos) }}" alt="">
                                                             <p>{{$product->Name}} </p>	
                                                                 <h2>{{$product->Price}} <span style="font-size:18px">EGP</span></h2>
-                                                    </div>			
+                                                 </div>			
                                                 </div>
-                                                <br>
-                                            <div class="choose">
-                                                <ul class="nav nav-pills nav-justified">
-                                                    <li><a><i class="fa "></i>{{$product->created_at->diffForHumans()}}</a></li>
-                                                    <li><a><i class="fa "></i>{{$product->City}}</a></li>
-                                                </ul>
-                                            </div>
-
-                                            
-                                            			<div class="choose choose-plus">
+                                            		<div class="choose">
 																<ul class="nav nav-pills nav-justified">
-																	<li><a href="Product Details.html"><i class="fa "></i>Product Details</a></li>
+																	<li><a style="font-size:12px"><i class="fa fa-clock-o "></i>{{$product->created_at->diffForHumans()}}</a></li>
+																	<li><a><i class="fa fa-map-marker "></i>{{$product->City}}</a></li>
 																</ul>
 															</div>
-                                            </div>
-                                    </div>
+															<div class="choose" onclick="location.href='{{Request::root()}}/item/{{$product->id}}'">
+																<ul class="nav nav-pills nav-justified">
+												
+																	<li><a class="external" href="{{Request::root()}}/item/{{$product->id}}"><i class="fa "></i>Product Details</a></li>
+																</ul>
+															</div>
+														</div>
+													</div> 
                     @endforeach		  
                     @endif 
             </div>

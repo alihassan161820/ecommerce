@@ -8,19 +8,19 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Alla Tre | @yield('title') </title>
     <title>{{ config('app.name', 'Alla Tre') }}</title>
+      {!! Html::style('css/cus.css') !!}
 
       @yield('style')
       
-    {!! Html::style('css/cus.css') !!}
     {!! Html::style('css/bootstrap.min.css') !!}
     {!! Html::style('css/font-awesome.min.css') !!}
         <!-- Default Theme css file -->
-    <link id="switcher" href="{{ Request::root() }}/css/themes/blue-theme.css" rel="stylesheet">   
        <!-- Slick slider css file -->
     {!! Html::style('css/slick.css') !!}
         <!-- Photo Swipe Image Gallery -->     
     <link rel='stylesheet prefetch' href='{{ Request::root() }}/css/photoswipe.css'>
     <link rel='stylesheet prefetch' href='{{ Request::root() }}/css/default-skin.css'>   
+    <link href="https://fonts.googleapis.com/css?family=El+Messiri" rel="stylesheet">
 
         <!-- Main structure css file -->
 
@@ -31,7 +31,6 @@
      {!! Html::style('css/animate.css') !!}
      {!! Html::style('css/responsive.css') !!}
      {!! Html::style('css/select2.css') !!}
-
      
         <!--user dropdown-->
         <link rel="stylesheet" type="text/css" href="/css/css/style.css" />        
@@ -67,9 +66,7 @@
 	</header><!--/header-->
 
 	
-	<section>
 	@yield('container')
-	</section>
 	
 	
 	<footer id="footer"><!--Footer-->
@@ -77,13 +74,13 @@
 	@include('website.layouts.footer')
 		
       {!! Html::script('js/jquery.js') !!}
+      {!! Html::script('js/main.js') !!}      
       {!! Html::script('js/add-to-wish.js') !!}      
       {!! Html::script('js/select2.min.js') !!}
       {!! Html::script('js/bootstrap.min.js') !!}
       {!! Html::script('js/jquery.scrollUp.min.js') !!}
       {!! Html::script('js/price-range.js') !!}
       {!! Html::script('js/jquery.prettyPhoto.js') !!}
-      {!! Html::script('js/main.js') !!}
 
 
 
@@ -136,7 +133,7 @@
                 });
 
 		</script>
-
+        @include('flashy::message')
         
         @yield('script')
 

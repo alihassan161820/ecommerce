@@ -39,7 +39,11 @@ Wish-List
 								@if(!$favorites->isEmpty())
 										@foreach($favorites as $product)
 												<tr>
-													<td class="col-md-4"><a href="product_detail.html"><img class="img-responsive fav-img" src="{{Storage::disk('local')->url($product->Photos) }}" alt=""></a></td>
+													@if(! empty($product->auction_id))
+													<td class="col-md-4"><a href="{{Request::root()}}/auction/{{$product->auction->id}}"><img class="img-responsive  item-imgs fav-img" src="{{asset('product_image/' . $product->Photos) }}" alt=""></a></td>
+													@else
+													<td class="col-md-4"><a href="{{Request::root()}}/item/{{$product->product_id}}"><img class="img-responsive  item-imgs fav-img" src="{{asset('product_image/' . $product->Photos) }}" alt=""></a></td>
+													@endif
 													<td>
 														<div>
 														<p><a style="color:#104e8e" href="#">{{$product->Name}}</a></p>

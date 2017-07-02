@@ -180,7 +180,9 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
         TCG\Voyager\VoyagerServiceProvider::class,
-        
+        Intervention\Image\ImageServiceProvider::class,
+            MercurySeries\Flashy\FlashyServiceProvider::class,
+
 
 
     ],
@@ -235,6 +237,8 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
         'Search' => AdvanceSearch\AdvanceSearchProvider\Facades\SearchFacades::class,
         		'Input' => Illuminate\Support\Facades\Input::class,
+                'Image' => Intervention\Image\Facades\Image::class,
+                    'Flashy' => MercurySeries\Flashy\Flashy::class,
 
     ],
 

@@ -19,6 +19,16 @@ class AppServiceProvider extends ServiceProvider
                 $view->with('categorries',Categorry::categories());
          });
 
+         view()->composer('website.create-auction',function($view){
+                $view->with('categorries',Categorry::categories());
+         });
+         
+        view()->composer('website.layouts.footer',function($view){
+                $view->with('categorries',Categorry::categories());
+         });
+        view()->composer('website.layouts.left-sidebar',function($view){
+                $view->with('categorries',Categorry::categories());
+         });
          view()->composer('website.layouts.bottomHeader',function($view){
                 $view->with('categorries',Categorry::categories());
          });
@@ -33,6 +43,14 @@ class AppServiceProvider extends ServiceProvider
 
          view()->composer('website.layouts.left-sidebar',function($view){
                 $view->with('classes',config('constant.classes'));
+         });
+
+         view()->composer('website.create-product',function($view){
+                $view->with('cities',config('constant.cities'));
+         });
+         
+        view()->composer('website.create-product',function($view){
+                $view->with('categorries',Categorry::categories());
          });
 
     }

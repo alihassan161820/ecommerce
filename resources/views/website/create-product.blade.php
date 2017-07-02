@@ -47,15 +47,51 @@ Ads
 								<tbody>
 
 								<tr>
-								<td>City</td>
-									<td> <input type="text" id="city"  name="city" class="form-control" value="{{ old('city') }}"   required autofocus>
+                    <td>City</td>
+                    <td>
+                            <select name="city" class="form-control input-sm" id="city">
+                            @if(!is_null($cities))
+                                    <option value="" disabled selected>Select A City</option>
+                                    @foreach($cities as $city)
+                                            <option value="{{$city}}">{{$city}}</option>
+                                    @endforeach
+                            @endif
+                            </select>           
                                @if ($errors->has('city'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('city') }}</strong>
                                     </span>
                                 @endif 
-                                </td>
-								</tr>
+                   </td>
+                  </tr>
+          
+                  
+                  <!--category dropdown start-->
+                  <tr>
+                  <td>Category</td>
+                  <td> 
+                  <select class="form-control input-sm" name="category" id="category">
+                  <option value="" disabled selected>Select A Category</option>
+                  @foreach($categorries as $category)
+                  <option value="{{$category->id}}">{{$category->Name}}</option>
+                  @endforeach
+                  </select>
+        
+                  </td>
+                  </tr>
+
+                    <tr>
+                  <td>Subcategory</td>
+                  <td>
+                        <select class="form-control input-sm" name="subcategory" id="subcategory">
+                            <option value=""></option>
+                        </select>
+
+                  </td>
+                  </tr>
+
+
+                  <!--end of drop down-->
 
 								  <tr>
 									<td>Item Name</td>
@@ -129,12 +165,49 @@ Ads
 			</div>
 		</div>
     </div>
+    
+    @section('script')
+    <script>
+      $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    var cat=document.getElementById("category");
+    cat.onchange = function(e){
+      var cat_id = e.target.value;
+       $.ajax({
+        data: { cat_id: cat_id },
+        url: 'getcategoryitem',
+        type: 'POST',
+        beforeSend: function(request) {
+            return request.setRequestHeader('X-CSRF-Token', $("meta[name='csrf-token']").attr('content'));
+        },
+        success: function(response) {
+            obj = JSON.parse(response.success)
+            console.log(obj);
+            appendDom=document.getElementById('subcategory');
+            appendDom.innerHTML ="";
+            for (var i=0;i<obj.length;i++)
+            {
+                appendDom=document.getElementById('subcategory');
+                var option = document.createElement("option");
+                option.text = obj[i].Name;
+                option.value = obj[i].id;
+                appendDom.add(option);
+            }
+    
+        }
+    });
+    }
+ </script>
+@endsection
 	
 	<!-- End Container Profile-->
 <!-- 
 @endsection
  -->
-
 
 
 

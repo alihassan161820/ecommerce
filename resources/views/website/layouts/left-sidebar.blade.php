@@ -2,7 +2,6 @@
 						
 	<div class="col-sm-3">
 					<div class="left-sidebar">
-						<h2>Category</h2>
 						<div class="panel-group category-products" id="accordian"><!--category-productsr-->
 								@if(!$categorries->isEmpty())
 									@foreach($categorries as $categorry)
@@ -32,11 +31,11 @@
 						</div><!--/category-products-->
 
 						<div class="shipping text-center"><!--shipping-->
-							<img src="images/home/shipping.jpg" alt="" />
+							<img src="{{Request::root()}}/images/home/shipping.jpg" alt="" />
 						</div><!--/shipping-->
 
 						<div class="shipping text-center"><!--shipping-->
-							<img src="images/home/shipping.jpg" alt="" />
+							<img src="{{Request::root()}}/images/home/rsz_zz.jpg" alt="" />
 						</div><!--/shipping-->
 					
 					</div>

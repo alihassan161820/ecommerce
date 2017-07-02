@@ -16,6 +16,8 @@ use Illuminate\Support\Facades\Input;
 use Intervention\Image\ImageManagerStatic as Image;
 use Illuminate\Support\Facades\Session;
 use Storage;
+use App\Subcategory;
+use Response;
 
 
 
@@ -25,10 +27,10 @@ class ProductController extends Controller
 
  public function __construct()
         {   
-            if(!$this->middleware('auth'))
-            {
-                return redirect('/home');
-            }
+            // if(!$this->middleware('auth'))
+            // {
+            //     return redirect('/home');
+            // }
         }
 
 
@@ -53,29 +55,31 @@ class ProductController extends Controller
         public function storeItem(Request $request,UploadRequest $photoRequest)
         {
  
-
-
             $this->validate($request,[
                     'name' => 'required',
                     'city' => 'required',
                     'description' => 'required|max:255',
+                     'category' => 'required', 
+                    'subcategory' => 'required', 
                     'price' => 'required|numeric|min:0.00',
                     'Condition' => 'required',
                     'units' => 'required|numeric|min:1'
                     ]);
-
+            
             $product =new Product();
-            $product->name =$request['name'];
+            $product->Name =$request['name'];
             $product->condition =$request['condition'];
-
-            $product->description =$request['description'];
-            $product->price =$request['price'];
-            $product->units =$request['units'];
-            $product->availability =1;
-            // $product->seller_id = Auth::user()->id;
+            $product->Description =$request['description'];
+            $con = Input::get('condition') == 'used' ? 'used' : 'new';
+            $product->condition = $con;
+            $product->Price =$request['price'];
+            $product->subcategory_id = $request['subcategory'];
+            $product->Units =$request['units'];
+            $product->Availability =1;
+            $product->seller_id = Auth::user()->id;
             $product->save();
 
-            $available= $product->availability == 1 ? 'available for buying' : 'Sold';      
+            $available= $product->Availability == 1 ? 'available for buying' : 'Sold';      
             $itemphoto = new ItemPhoto();
 
             foreach ($photoRequest->Photos as $photo)
@@ -113,15 +117,57 @@ class ProductController extends Controller
             }
 
     
-
-
-   
   
     public function show($id)
     {
         $product = Product::find($id);
-        return view("website.product-detail" ,compact('product'));
-    }
+        $item_photos = ItemPhoto::where('product_id',$product->id)->get();
+
+
+        $case;
+        $AuthCase;
+        $similarPhoto;
+        $similarProducts = Product::where('subcategory_id',$product->subcategory_id)->get();
+
+        // foreach($similarProducts as $similarProduct){
+        //     $similarPhoto = ItemPhoto::where('product_id',$similarProduct->id)->get()->first();
+            
+        //     Session([$similarProduct->id => $similarPhoto->Photos]);
+        // }
+        
+
+    if(($product == null || $product == null) )
+    {
+
+        $case = false;
+    
+    }else
+    {
+
+     $case = true ;
+            if( Auth::user()->id == $product->seller_id ){
+                $AuthCase = true ;
+            }else{
+                $AuthCase = false ;
+            }
+                  }
+
+
+
+    return view('website.product-detail',[
+        'product' => $product,
+        'item_photos' => $item_photos,
+         'case' => $case,
+         'authcase' => $AuthCase,
+         'similarProducts' => $similarProducts
+         
+        ]);
+        // return view("website.product-detail" ,compact('product' ,'item_photos'));
+
+
+}
+
+    
 
   
     public function edit($id)
@@ -135,11 +181,27 @@ class ProductController extends Controller
         //
     }
 
-  
-    public function destroy($id)
+    public function destroy(Request $request)
     {
+
+       $product_id = $request['product_id'];
+       $product = Product::where('id' , $product_id)->delete(); 
+       $photo = ItemPhoto::where('product_id', $product_id)->delete();
+        return redirect('/');
+        // Redirect::route('home');
+
+
+    
     }
-      
+       public function getCategory(Request $request)
+    {
+          if ($request->ajax()) {
+       $cat_id = Input::get('cat_id');
+           $subcategory = Subcategory::where('categorry_id','=',$cat_id)->get();
+            return Response::json(['success' => json_encode($subcategory)], 200);
+    }
+    }
+
 
 
 

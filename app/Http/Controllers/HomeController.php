@@ -24,14 +24,16 @@ class HomeController extends Controller
     {  
         $featuredProds = Product::featuredProds();
         $latestProds = Product::latestProdslimit();
+        $productcount = Product::count();
+        $auctioncount = Auction::count();
+
         if (Auth::check()){
         $favorites = Favorite::favoriteProducts(Auth::user()->id);
-            return view('website.index',compact('featuredProds','latestProds','favorites'));            
+            return view('website.index',compact('featuredProds','latestProds','favorites','productcount','auctioncount'));            
         }
         else{
-            return view('website.index',compact('featuredProds','latestProds'));            
+            return view('website.index',compact('featuredProds','latestProds','productcount','auctioncount'));            
         }
-   
     }
     
     public function updateBid(Request $request){

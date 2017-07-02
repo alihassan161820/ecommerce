@@ -1,4 +1,3 @@
-
 @extends('website.master')
 @section('title')
 Ads
@@ -45,12 +44,18 @@ Ads
                {{ csrf_field() }}
 
               <table class="table table-user-information">
-                <tbody> 
-                  
-           
+                <tbody>
                   <tr>
                     <td>City</td>
-                    <td> <input type="text" id="city"  name="city" value="{{ old('city') }}"   required autofocus>
+                    <td>
+                            <select name="city" class="form-control input-sm" id="city">
+                            @if(!is_null($cities))
+                                    <option value="" disabled selected>Select A City</option>
+                                    @foreach($cities as $city)
+                                            <option value="{{$city}}">{{$city}}</option>
+                                    @endforeach
+                            @endif
+                            </select>           
                                @if ($errors->has('city'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('city') }}</strong>
@@ -58,8 +63,35 @@ Ads
                                 @endif 
                    </td>
                   </tr>
+          
+                  
+                  <!--category dropdown start-->
+                  <tr>
+                  <td>Category</td>
+                  <td> 
+                  <select class="form-control input-sm" name="category" id="category">
+                  <option value="" disabled selected>Select A Category</option>
+                  @foreach($categorries as $category)
+                  <option value="{{$category->id}}">{{$category->Name}}</option>
+                  @endforeach
+                  </select>
+        
+                  </td>
+                  </tr>
+
+                    <tr>
+                  <td>Subcategory</td>
+                  <td>
+                        <select class="form-control input-sm" name="subcategory" id="subcategory">
+                            <option value=""></option>
+                        </select>
+
+                  </td>
+                  </tr>
 
 
+                  <!--end of drop down-->
+                  
                   <tr>
                   <td>Item Name</td>
                   <td> <input type="text" id="name" name="name" value="{{ old('name') }}"  required autofocus/> 
@@ -125,33 +157,27 @@ Ads
                     <input type="radio" name="Condition" value="used"/> Used
                   </td>
                   </tr>
-                  
+    
                   <tr>
-                  <td>End Time</td>
-                  <td><input type="datetime-local"  id="end_time" name="end_time"  value="{{ old('end_time') }}" required>
-                             
-                              @if ($errors->has('end_time'))
+                  <td><label for="end_time" class="control-label">Auction Period <span class="required">*</span>
+                              </label></td>
+                    <td>
+                      <ul class="nav navbar-nav navbar-left" >
+                        <select class="per-select" name="period">
+                          <option value="{{\Carbon\Carbon::now()->addMinutes(1)}}">30 min</option>
+                          <option value="{{\Carbon\Carbon::now()->addHours(1)}}">1 hour</option>
+                          <option value="{{\Carbon\Carbon::now()->addHours(2)}}">2 hour </option>
+                          <option value="{{\Carbon\Carbon::now()->addHours(4)}}">4 hour </option>
+                          <option value="{{\Carbon\Carbon::now()->addHours(6)}}">6 hour </option>
+                          <option value="{{\Carbon\Carbon::now()->addHours(12)}}">12 hour </option>
+                          <option value="{{\Carbon\Carbon::now()->addDay(1)}}">24 hour </option>
+                        </select> 
+                      </ul> 
+                        @if ($errors->has('end_time'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('end_time') }}</strong>
                                     </span>
-                                @endif
-                  </td>
-                  </tr>
-                  
-                  <tr>
-                  <td>Period</td>
-                    <td>
-                      <ul class="nav navbar-nav navbar-right" name="period">
-                        <select class="per-select">
-                          <option value="">30 min</option>
-                          <option value="">1 hour</option>
-                          <option value="">2 hour </option>
-                          <option value="">4 hour </option>
-                          <option value="">6 hour </option>
-                          <option value="">12 hour </option>
-                          <option value="">24 hour </option>
-                        </select> 
-                      </ul>                 
+                                @endif             
                     </td>
                   </tr>
                 
@@ -185,59 +211,48 @@ Ads
       </div>
     </div>
     </div>
-  
+ 
  @endsection
 
+@section('script')
+ 
+  <script>
+   $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    var cat=document.getElementById("category");
+    cat.onchange = function(e){
+      var cat_id = e.target.value;
+       $.ajax({
+        data: { cat_id: cat_id },
+        url: 'getcategory',
+        type: 'POST',
+        beforeSend: function(request) {
+            return request.setRequestHeader('X-CSRF-Token', $("meta[name='csrf-token']").attr('content'));
+        },
+        success: function(response) {
+            obj = JSON.parse(response.success)
+            console.log(obj);
+            appendDom=document.getElementById('subcategory');
+            appendDom.innerHTML ="";
+            for (var i=0;i<obj.length;i++)
+            {
+                appendDom=document.getElementById('subcategory');
+                var option = document.createElement("option");
+                option.text = obj[i].Name;
+                option.value = obj[i].id;
+                appendDom.add(option);
+            }
+    
+        }
+    });
+    }
+ 
+</script>
+@endsection
 
 
 
