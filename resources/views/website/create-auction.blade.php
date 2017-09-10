@@ -1,6 +1,6 @@
 @extends('website.master')
 @section('title')
-Ads
+Create auction
 @endsection
 @section('container')
 
@@ -48,6 +48,7 @@ Ads
                   <tr>
                     <td>City</td>
                     <td>
+                    <!--city dropdown start-->
                             <select name="city" class="form-control input-sm" id="city">
                             @if(!is_null($cities))
                                     <option value="" disabled selected>Select A City</option>
@@ -63,7 +64,7 @@ Ads
                                 @endif 
                    </td>
                   </tr>
-          
+                   <!--end of drop down-->
                   
                   <!--category dropdown start-->
                   <tr>
@@ -77,6 +78,7 @@ Ads
                   </select>
         
                   </td>
+                   <!--Subcategory dropdown start-->
                   </tr>
 
                     <tr>
@@ -94,7 +96,7 @@ Ads
                   
                   <tr>
                   <td>Item Name</td>
-                  <td> <input type="text" id="name" name="name" value="{{ old('name') }}"  required autofocus/> 
+                  <td> <input type="text" id="name" name="name" class="form-control" value="{{ old('name') }}"  required autofocus/> 
                    @if ($errors->has('name'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('name') }}</strong>
@@ -106,7 +108,7 @@ Ads
 
                  <tr>
                   <td>Starting Price</td>
-                  <td> <input type="number" min="0" id="starting_price" name="starting_price" value="{{ old('starting_price') }}" required>  
+                  <td> <input type="number" min="0" id="starting_price" class="form-control" name="starting_price" value="{{ old('starting_price') }}" required>  
                                @if ($errors->has('starting_price'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('starting_price') }}</strong>
@@ -117,7 +119,7 @@ Ads
                  
                  <tr>
                   <td>Buy Now Price</td>
-                  <td><input type="number" min="0" id="buy_now_price" name="buy_now_price" 
+                  <td><input type="number" min="0" id="buy_now_price" class="form-control" name="buy_now_price" 
                               value="{{ old('buy_now_price') }}"  required>
                               @if ($errors->has('buy_now_price'))
                                     <span class="help-block">
@@ -129,7 +131,7 @@ Ads
                   
                   <tr>
                   <td>Target Price</td>
-                  <td><input type="number" min="0"  id="target_price" name="target_price" value="{{ old('target_price') }}"  required>
+                  <td><input type="number" min="0"  id="target_price" name="target_price" class="form-control" value="{{ old('target_price') }}"  required>
                               @if ($errors->has('target_price'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('target_price') }}</strong>
@@ -140,7 +142,7 @@ Ads
                   
                   <tr>
                   <td>Number Of Unit</td>
-                  <td><input type="number" min="0" id="units" name="units" value="{{ old('units') }}"  required>
+                  <td><input type="number" min="0" id="units" class="form-control" name="units" value="{{ old('units') }}"  required>
                              
                               @if ($errors->has('no_of_unit'))
                                     <span class="help-block">
@@ -164,7 +166,8 @@ Ads
                     <td>
                       <ul class="nav navbar-nav navbar-left" >
                         <select class="per-select" name="period">
-                          <option value="{{\Carbon\Carbon::now()->addMinutes(1)}}">30 min</option>
+                        <option value="{{\Carbon\Carbon::now()->addMinutes(3)}}">3 min</option>
+                          <option value="{{\Carbon\Carbon::now()->addMinutes(30)}}">30 min</option>
                           <option value="{{\Carbon\Carbon::now()->addHours(1)}}">1 hour</option>
                           <option value="{{\Carbon\Carbon::now()->addHours(2)}}">2 hour </option>
                           <option value="{{\Carbon\Carbon::now()->addHours(4)}}">4 hour </option>
@@ -183,13 +186,13 @@ Ads
                 
                   <tr>
                   <td>Choose Picture</td>
-                  <td><input type="file" name="Photos[]" accept="image/*" multiple /></td>
+                  <td><input type="file" name="Photos[]" class="form-control" accept="image/*" multiple /></td>
                   </tr>
                   
                   <tr>
                   <td>Description</td>
                   <td>
-                    <textarea row="15" placeholder="What Would You Like To Say " name="description" id="description"  class="wp-form-control wpcf7-textarea" cols="30" rows="10" value="{{ old('description') }}"></textarea>
+                    <textarea row="15" placeholder="What Would You Like To Say " class="form-control"name="description" id="description"  class="wp-form-control wpcf7-textarea" cols="30" rows="10" value="{{ old('description') }}" required></textarea>
                                @if ($errors->has('description'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('description') }}</strong>

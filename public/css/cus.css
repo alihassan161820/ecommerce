@@ -54,8 +54,8 @@
     }
     .seach-box {
 
-    left: 379px;
-    margin-top: 14px;
+/*    left: 379px;
+*/    margin-top: 14px;
     }
     
     .search-btn {
@@ -86,12 +86,15 @@
         position: absolute;
         top: -72px;
         z-index: 1;
-        left: 321px;
         color: white;
+        float: right !important;
+        width: 100%;
     }
     
     .wrapper-dropdown-5 {
         background: #104e8e;
+        float: right;
+         right: 5%;  
     }
     
     .wrapper-dropdown-5:after {
@@ -103,9 +106,8 @@
     }
     
     #fh5co-our-services {
-        width: 116%;
+        width: 100%;
         position: relative;
-        right: 88px;
         padding-bottom: 9px;
         padding-top: 60px;
             margin-top: -3%;
@@ -287,7 +289,7 @@ h2.title {
 }
 .main-a{
         margin: 85px 20% 0 25%;
-        width:60%;
+        width:100%;
 }
 
 .search-query{
@@ -303,9 +305,9 @@ h2.title {
 }
 
 .select2-container{
-    width: 144px;
+    width: 144px !important;
     left: -9px;
-    margin-right: 20px
+    margin-right: 53px;
 }
 
 .search-box-input {
@@ -526,3 +528,24 @@ h2.title {
     border-radius: 3px;
     display: inline-block;
     }
+
+
+    .form-search-a{
+            float: right !important;        
+    }
+
+    #similar-product .carousel-inner .item img {
+    display: inline-block;
+    margin-left: 31px;
+    margin-top: 6px;
+}
+
+.auction-details{
+        width: 77% !important;     
+
+}
+
+.similar-title{
+        margin-right: 242px;
+
+}

@@ -33,7 +33,7 @@
 					</div>
 					 @if(Auth::check() && Auth::user()->role_id == 1)
                                 @else
-										<div class="col-md-3">
+										<div class="col-md-5">
 									<section class="main place-new-ads">
 									<div class="wrapper-demo">
 										<div id="dd" class="wrapper-dropdown-5" tabindex="1">Place a New Ad

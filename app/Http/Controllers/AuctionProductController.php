@@ -20,6 +20,7 @@ use Intervention\Image\ImageManagerStatic as Image;
 use Storage;
 use App\Subcategory;
 use Response;
+use Carbon\Carbon;
 
 class AuctionProductController extends Controller
 {
@@ -139,7 +140,7 @@ $itemphoto = new ItemPhoto();
 
               ]);
               $bid = new Bid;
-              $bid->users_id = Auth::user()->id;
+              $bid->users_id = 0;
               $bid->Amount = $auc->StartingPrice;
               $bid->auction_id = $auc->id;
               $bid->save(); 
@@ -158,20 +159,35 @@ $itemphoto = new ItemPhoto();
     public function show($id)
     {
         $auction = Auction::find($id);
+        
+        if(is_null($auction)){
+          return view('errors.notfound');
+        }
+
         $product = Product::where('auction_id' , $auction->id)->get()->first(); 
+        if(is_null($product)){
+          return view('errors.404');
+        }
         $item_photos = ItemPhoto::where('product_id',$product->id)->get();
         $bids = Bid::where('auction_id',$auction->id)->get()->first();
 
-        $similarPhoto;
-        $similarProducts="";
-        $similarProducts = Product::where('subcategory_id',$product->subcategory_id)->get();
-        // if(!$similarProducts->isEmpty()){
-        //     foreach($similarProducts as $similarProduct){
-        //         $similarPhoto = ItemPhoto::where('product_id',$similarProduct->id)->get()->first();
-                
-        //         Session([$similarProduct->id => $similarPhoto->Photos]);
-        //     }
-        // }
+     $similarPhoto;
+     $similarProducts = Product::where('subcategory_id',$product->subcategory_id)->get();
+
+     foreach($similarProducts as $similarProduct){
+
+          if($similarProduct->id != $product->id){
+
+            $similarPhoto = ItemPhoto::where('product_id',$similarProduct->id)->get()->first();
+
+          if(!is_null($similarPhoto)){
+            
+            Session([$similarProduct->id => $similarPhoto->Photos]);
+          }
+          }
+          
+         
+     }
 
           if($bids){
             session(['bidUserID' => $bids->users_id]);
@@ -230,5 +246,54 @@ $itemphoto = new ItemPhoto();
            $subcategory = Subcategory::where('categorry_id','=',$cat_id)->get();
             return Response::json(['success' => json_encode($subcategory)], 200);
     }
+  }
+
+
+
+//     public function updateBid(Request $request){
+
+//           if ($request->ajax()) {
+//             return Response::json(['success' => json_encode('success')], 200);
+
+// }
+//     }
+    
+
+    public function getInfo(Request $request){
+      $auction = Auction::find($request['auction_id']);
+         $bids = Bid::where('auction_id',$auction->id)->get()->first();
+
+        if($auction->EndTime <= Carbon::now())
+                { 
+
+              if($auction->StartingPrice < $bids->Amount)
+              { 
+
+                if(Auth::user()->id == $auction->creator_id)
+                 {
+               
+                Auction::where('id' , '=' , $auction->id)
+                                                        ->update([
+                                                                   'winner_id' => $bids->users_id
+                                                                  ]);
+                $auctions = Auction::find($auction->id);
+
+                $info = User::where('id','=',$auctions->winner_id)->get()->first();
+
+                
+
+                return view('website.info',compact('info'));
+
+              }else if(Auth::user()->id != $auction->creator_id){
+                  
+                $auctions = Auction::find($auction->id);
+
+                $info = User::where('id','=',$auctions->creator_id)->get()->first();
+                 
+
+                return view('website.info',compact('info'));
     }
+}
+}
+}
 }

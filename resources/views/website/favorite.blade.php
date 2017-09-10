@@ -40,7 +40,7 @@ Wish-List
 										@foreach($favorites as $product)
 												<tr>
 													@if(! empty($product->auction_id))
-													<td class="col-md-4"><a href="{{Request::root()}}/auction/{{$product->auction->id}}"><img class="img-responsive  item-imgs fav-img" src="{{asset('product_image/' . $product->Photos) }}" alt=""></a></td>
+													<td class="col-md-4"><a href="{{Request::root()}}/auction/{{$product->auction_id}}"><img class="img-responsive  item-imgs fav-img" src="{{asset('product_image/' . $product->Photos) }}" alt=""></a></td>
 													@else
 													<td class="col-md-4"><a href="{{Request::root()}}/item/{{$product->product_id}}"><img class="img-responsive  item-imgs fav-img" src="{{asset('product_image/' . $product->Photos) }}" alt=""></a></td>
 													@endif

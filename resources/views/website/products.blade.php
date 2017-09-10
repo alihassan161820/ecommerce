@@ -508,7 +508,6 @@ Products
 
           {!! Html::script('js/slick.min.js') !!}
           {!! Html::script('js/waypoints.min.js') !!}
-          {!! Html::script('js/modernizr.custom.79639.js') !!}
           {!! Html::script('js/jquery.counterup.min.js') !!}
               <!-- verfied hover effect -->
 

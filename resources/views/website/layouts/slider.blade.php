@@ -1,4 +1,4 @@
-		<section class="main-search">
+		<section class="main-search container">
 			<div class="row" style="padding-bottom:9%">		
 			<div class="col-sm-12">
 				<div class="search-content">

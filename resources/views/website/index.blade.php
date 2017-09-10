@@ -16,7 +16,6 @@ Home
 	<!-- Owl Carousel -->
 	<link rel="stylesheet" href="our-service/css/bootstrap.css">
 		<link rel="stylesheet" href="our-service/css/style.css">
-	<script src="our-service/js/modernizr-2.6.2.min.js"></script>
 
 @endsection
 @section('container')
@@ -122,8 +121,8 @@ Home
 								<li class="active"><a href="#Electronics" data-toggle="tab">Electronics</a></li>
 								<li><a href="#cars" data-toggle="tab">Vehicles</a></li>
 								<li><a href="#mobile" data-toggle="tab">Mobile Phones & Accessories</a></li>
-								<li><a href="#poloshirt" data-toggle="tab">recommended</a></li>
-							</ul>
+<!-- 								<li><a href="#poloshirt" data-toggle="tab">Fashion and beauty</a></li>
+ -->							</ul>
 						</div>
 						<div class="tab-content">
 					
@@ -198,9 +197,34 @@ Home
 										</a>
 									</div>
 							</div>
-							<div class="tab-pane fade" id="poloshirt" >
-							
-							</div>
+						<!-- 	<div class="tab-pane fade" id="poloshirt" >
+										<div class="main-tap-img co-md-4">
+										<a href="{{url('/c/Fashion & Beauty/Mens Clothing')}}">
+											<img src="images/home/rsz-men.jpg" class=" img-responsive" alt="" />
+											<h4>Men clothing</h4>
+										</a>
+									</div>
+										<div class="right-tap-img col-md-3">
+										<a href="{{url('/c/Fashion & Beauty/Womens Clothing')}}">
+											<img src="images/home/rsz-woman.jpg" class=" img-responsive" alt="" />
+											<h4 class="top-img" >Women clothing</h4>
+										</a>
+											<a href="{{url('/c/Fashion & Beauty/Decoration')}}">
+											<img src="images/home/rsz-decoration.jpg" class=" img-responsive" alt="" />
+											<h4>Home Decoration</h4>
+										</a>
+									</div>	
+									<div class="left-tap-img col-md-3">
+										<a href="{{url('/c/Fashion & Beauty/Jewelry & Gold')}}">
+											<img src="images/home/rsz-rings.jpg" class=" img-responsive" alt="" />
+											<h4  class="top-img">Jewelry</h4>
+										</a>
+											<a href="{{url('/c/Fashion & Beauty/Womens Accessories')}}">
+											<img src="{{Request::root()}}images/home/rsz-waccess.jpg" class=" img-responsive" alt="" />
+											<h4>Women Accessories</h4>
+										</a>
+									</div>
+							</div> -->
 						</div>
 					</div><!--/category-tab-->
 					</div>

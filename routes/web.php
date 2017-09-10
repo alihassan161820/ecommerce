@@ -26,6 +26,11 @@ Route::post('/{ti}/{c}/removefromwish', 'FavoriteController@destroy');
 Route::get('/favorite','FavoriteController@index');
 Route::post('/favorite','FavoriteController@destroy');
 
+// email cofirmation
+Route::get('/users/confirmation/{token}','Auth\RegisterController@confirmation')->name('confirmation');
+Route::get('verify/{email}/{token}','Auth\RegisterController@sendEmailDone')->name('sendEmailDone');
+Route::get('fullyregistered','Auth\FullyRegisteredController@getfullyRegistered')->name('fullyregistered');
+Route::post('fullyregistered','Auth\FullyRegisteredController@fullyRegistered')->name('fullyregistered');
 
 //filtered products routes 
 Route::get('/p/{city}/{product?}','FilteredProduectController@show');
@@ -48,17 +53,21 @@ Route::get('/createitem','ProductController@getCreate')->name('createitem');
 Route::post('/createitem','ProductController@storeItem')->name('storeitem');
 Route::get('/item/{id}','ProductController@show')->name('item');
 Route::post('/deleteitem','ProductController@destroy')->name('deleteitem');
+Route::post('/getcategoryitem','ProductController@getCategory');
 
 
 
 // auction routes
-Route::post('bid','BidController@postData')->name('update');
+Route::post('/auction/{id}','BidController@postData');
 Route::get('/createauction','AuctionProductController@getCreate');
 Route::post('/createauction','AuctionProductController@storeItem')->name('store');
 Route::get('/auction/{id}','AuctionProductController@show')->name('auctiondetails');
 Route::post('/deleteauction','AuctionProductController@destroy')->name('deleteauction');
 Route::post('/confirm','AuctionProductController@confirmation');
 Route::post('/getcategory','AuctionProductController@getCategory');
+Route::post('/info','AuctionProductController@getInfo');
+
+
 
 
 //profile routes 

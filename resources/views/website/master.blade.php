@@ -20,14 +20,11 @@
         <!-- Photo Swipe Image Gallery -->     
     <link rel='stylesheet prefetch' href='{{ Request::root() }}/css/photoswipe.css'>
     <link rel='stylesheet prefetch' href='{{ Request::root() }}/css/default-skin.css'>   
-    <link href="https://fonts.googleapis.com/css?family=El+Messiri" rel="stylesheet">
 
         <!-- Main structure css file -->
 
      {!! Html::style('css/main.css') !!}
      {!! Html::style('css/style.css') !!}
-     {!! Html::style('css/prettyPhoto.css') !!}
-     {!! Html::style('css/price-range.css') !!}
      {!! Html::style('css/animate.css') !!}
      {!! Html::style('css/responsive.css') !!}
      {!! Html::style('css/select2.css') !!}
@@ -36,16 +33,12 @@
         <link rel="stylesheet" type="text/css" href="/css/css/style.css" />        
         <link rel="stylesheet" type="text/css" href="/css/css/user-drop.css" />
 
-        <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css' />
-		<script type="text/javascript" src="js/js/modernizr.custom.79639.js"></script> 
 		<noscript><link rel="stylesheet" type="text/css" href="css/css/noJS.css" /></noscript>
 
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
       <link rel="icon" href="{{ Request::root() }}/images/06.png">
       <!-- Google fonts -->
-      <link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>  
-      <link href='http://fonts.googleapis.com/css?family=Habibi' rel='stylesheet' type='text/css'>   
       <link href='http://fonts.googleapis.com/css?family=Cinzel+Decorative:900' rel='stylesheet' type='text/css'>
       {!! Html::style('css/cus.css') !!}
       {!! Html::style('css/sm.css') !!}
@@ -74,13 +67,9 @@
 	@include('website.layouts.footer')
 		
       {!! Html::script('js/jquery.js') !!}
-      {!! Html::script('js/main.js') !!}      
       {!! Html::script('js/add-to-wish.js') !!}      
       {!! Html::script('js/select2.min.js') !!}
       {!! Html::script('js/bootstrap.min.js') !!}
-      {!! Html::script('js/jquery.scrollUp.min.js') !!}
-      {!! Html::script('js/price-range.js') !!}
-      {!! Html::script('js/jquery.prettyPhoto.js') !!}
 
 
 
@@ -133,7 +122,7 @@
                 });
 
 		</script>
-        @include('flashy::message')
+      
         
         @yield('script')
 

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html >
 <head>
   <meta charset="UTF-8">
@@ -22,7 +22,7 @@
     </div>
   </div>
   
-  <div class="form wow fadeInLeft" data-wow-duration="5s">
+  <div class="form wow fadeInLeft form-horizontal" data-wow-duration="5s">
   
     <div class="thumbnail">
       <a href="index.html"><img src="images/" alt="logo"/></a>
@@ -30,7 +30,14 @@
     
     <form class="login-form" role="form" method="POST" action="{{ route('login') }}">
     {{ csrf_field() }}
+  <div class="input-group">
     <input type="email" name="email" placeholder="Enter your E-mail"/>
+
+  
+  </div>
+
+
+
     <input type="password" name="password" placeholder="Password"/>
     <input type="submit" value="Login"/>
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -48,7 +55,7 @@
           <input id="lastname" name="lastname" type="text" />
         
           <label for="email" >Email Address</label>
-          <input id="email" name="email" type="text"  />
+          <input id="email" name="email" type="text" />
        
           <label for="password" >Password</label>
           <input id="password" name="password" type="password"  />
@@ -86,4 +93,4 @@
   
 
 </body>
-</html>
+</html> -->

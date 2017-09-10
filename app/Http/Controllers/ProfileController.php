@@ -87,6 +87,9 @@ class ProfileController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function destroy($id) {
-		//
+	   $product_id = $request['product'];
+       $product = Product::find($id)->delete();
+
+        return redirect('/');
 	}
 }

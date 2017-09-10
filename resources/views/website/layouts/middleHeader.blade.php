@@ -10,8 +10,8 @@
 				
 
                 <script src="{{ asset('js/app.js') }}"></script>
-                                        <div class=" col-sm-5 seach-box">
-                                                <form method="post" action="/" class="form-inline" >
+                                        <div class=" col-sm-8 seach-box">
+                                                <form method="post" action="/" class="form-inline form-search-a" >
                                                 {{ csrf_field() }}
                                                 <input name="product" class="span3 search-box-input" type="text"  placeholder="Keywords: Car, Mobile, Laptop" >
                                                 <select name="city" class="col-sm-4" id="city">

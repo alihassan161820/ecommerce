@@ -1,3 +1,7 @@
+
+//updatesssss
+
+var isend;
 var countdown = function(enddate , attributes ,finish){
 	var _second=1000, /*we make variable named _second = 1000 wich means 1000 mille seconds which is real second  */
 	_minute = _second * 60,
@@ -18,11 +22,13 @@ var countdown = function(enddate , attributes ,finish){
 		}
 		
 		if(remaining <= 0) {
-			//if time finish
-			/*
-			callback
-			clear our timer 
-			*/
+		 console.log(remaining);
+		     isend = true;	
+			// 
+
+
+			
+
 			
 			
 		} else{

@@ -63,8 +63,8 @@ Service
                   <!-- Start Single Service -->
                   <div class="col-lg-4 col-md-4">
                     <div class="single-service">
-                      <div class="service-icon">
-                        <span class="fa fa-bell service-icon-effect"></span>  
+                      <div class="service-icon" >
+                        <span class="fa fa-bell service-icon-effect" ></span>  
                       </div>                      
                       <h3><a href="/createitem">Sell</a></h3>
                       <p>To sell on Alla tre, you first need to register for an Alla tre account if you don’t have one. 
@@ -116,7 +116,7 @@ Service
                   <div class="media">
                     <div class="media-left">
                       <a href="#" class="media-icon">
-                        <span class="fa fa-calendar"></span>
+                        <span class="fa fa-calendar" style="color: #104e8e;"></span>
                       </a>
                     </div>
                     <div class="media-body">
@@ -127,7 +127,7 @@ Service
                   <div class="media">
                     <div class="media-left">
                       <a href="#" class="media-icon">
-                        <span class="fa fa-thumbs-up"></span>
+                        <span class="fa fa-thumbs-up" style="color: #104e8e;"></span>
                       </a>
                     </div>
                     <div class="media-body">
@@ -138,7 +138,7 @@ Service
                   <div class="media">
                     <div class="media-left">
                       <a href="#" class="media-icon">
-                        <span class="fa fa-asterisk"></span>
+                        <span class="fa fa-asterisk" style="color: #104e8e;"></span>
                       </a>
                     </div>
                     <div class="media-body">
@@ -165,7 +165,7 @@ Service
               <div class="col-lg-3 col-md-3 col-sm-6">
                 <div class="counter-box">
                   <div class="counter-no counter">
-                    2000
+                    200
                   </div>
                   <div class="counter-label">Product</div>
                 </div>
@@ -173,7 +173,7 @@ Service
               <div class="col-lg-3 col-md-3 col-sm-6">
                  <div class="counter-box">
                   <div class="counter-no counter">
-                    2500
+                    250
                   </div>
                   <div class="counter-label">Cuctomer</div>
                 </div>
@@ -214,7 +214,7 @@ Service
                 <div class="panel panel-default">
                   <div class="panel-heading">
                     <h4 class="panel-title">
-                      <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                      <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" style="color: #104e8e;">
                         I am new to Alla tre: Where do I start ? <span class="fa fa-minus"></span>
                       </a>
                     </h4>
@@ -229,7 +229,7 @@ Service
                 <div class="panel panel-default">
                   <div class="panel-heading">
                     <h4 class="panel-title">
-                      <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                      <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" style="color: #104e8e; ">
                         Create Auction<span class="fa fa-plus"></span>
                       </a>
                     </h4>
@@ -246,7 +246,7 @@ Service
                 <div class="panel panel-default">
                   <div class="panel-heading">
                     <h4 class="panel-title">
-                      <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+                      <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree " style="color: #104e8e;">
                         How i can bid on product  <span class="fa fa-plus"></span>
                       </a>
                     </h4>
@@ -269,7 +269,7 @@ Service
                 <div class="panel panel-default">
                   <div class="panel-heading">
                     <h4 class="panel-title">
-                      <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
+                      <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour" style="color: #104e8e;">
                         When does an auction end?<span class="fa fa-plus"></span>
                       </a>
                     </h4>
@@ -284,7 +284,7 @@ Service
                 <div class="panel panel-default">
                   <div class="panel-heading">
                     <h4 class="panel-title">
-                      <a data-toggle="collapse" data-parent="#accordion" href="#collapseFive">
+                      <a data-toggle="collapse" data-parent="#accordion" href="#collapseFive" style="color: #104e8e;"">
                         What do I do, if I've forgotten my password or user name? <span class="fa fa-plus"></span>
                       </a>
                     </h4>
@@ -306,30 +306,30 @@ Service
               </div>
               <div class="how-works">
                 <ul class="nav nav-tabs" id="myTab">
-                  <li class="active"><a href="#experiment" data-toggle="tab">Experiment</a></li>
-                  <li><a href="#monitor" data-toggle="tab">Monitor</a></li>
-                  <li><a href="#clean" data-toggle="tab">Clean</a></li>
-                  <li><a href="#fast" data-toggle="tab">Fast</a></li>
-                  <li><a href="#support" data-toggle="tab">Support</a></li>
+                  <li class="active"><a href="#experiment" data-toggle="tab" style="color: #104e8e;">Experiment</a></li>
+                  <li><a href="#monitor" data-toggle="tab" style="color: #104e8e;">Monitor</a></li>
+                  <li><a href="#clean" data-toggle="tab" style="color: #104e8e;">Efficient</a></li>
+                  <li><a href="#fast" data-toggle="tab" style="color: #104e8e;">Winning Bids</a></li>
+                  <li><a href="#support" data-toggle="tab" style="color: #104e8e;">Support</a></li>
                 </ul>
                 <!-- Tab panes -->
                 <div class="tab-content">
                   <div class="tab-pane fade in active" id="experiment">
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                    <p>we have experience on ecommerce system and bidding auction and will develop more this experience to serve our users and keep them more happy and satisfaction in our service .</p>
                   </div>
                   <div class="tab-pane fade " id="monitor">
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                    <img class="img-center" src="images/choose-us-img2.jpg" alt="img">
+                    <p>we have controller to get controler in our website and blocked any user want to damadge our process and we will put rate for each use to get more trusted </p>
+                   
                   </div>
                   <div class="tab-pane fade " id="clean">
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                    <p>We closely cooperate with our customers, taking into consideration their points of view and wishes, gaining information about their clients and competitors to offer customer oriented and efficient products.</p>
                   </div>
                   <div class="tab-pane fade " id="fast">
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                     <img class="img-center" src="images/choose-us-img1.jpg" alt="img">
+                    <p>The bidding for each auction closes at the scheduled time. In the case of sales of multiple lots, the participants with the highest bids at the close of the auction are obligated to buy the items. If no one bids at or above the reserve price, the auction closes without a winner. At the close of a successful auction, the buyer and seller communicate.</p>
+                     
                   </div>
                   <div class="tab-pane fade " id="support">
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>                     
+                    <p>we spend more effort to make allatre more easy to use and be the best online auction in egypt.</p>                     
                   </div>
                 </div>
               </div>
@@ -344,7 +344,6 @@ Service
 @section('script')
 
           {!! Html::script('js/slick.min.js') !!}
-          {!! Html::script('js/modernizr.custom.79639.js') !!}
           
           {!! Html::script('js/waypoints.min.js') !!}
           {!! Html::script('js/jquery.counterup.min.js') !!}

@@ -1,6 +1,6 @@
 @extends('website.master')
 @section('title')
-Home
+Contact us
 @endsection
 @section('container')
       <section id="blogArchive">      
@@ -50,21 +50,12 @@ Home
                 <h2>Contact Information</h2>
                 <div class="line"></div>
               </div>
-               <p>The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters.</p>
+               <p>we will be happy if you share with us your idea.</p>
               <address class="contact-info">               
                 <p><span class="fa fa-home"></span>Alexandria</p>
-                <p><span class="fa fa-phone"></span>0123456789</p>
-                <p><span class="fa fa-envelope"></span>www.Bidding.com</p>
+                <p><span class="fa fa-phone"></span>0123684587</p>
+                <p><span class="fa fa-envelope"></span>www.alltre.com</p>
               </address>
-              <h3>Social Media</h3>
-              <div class="social-share">               
-               <ul>
-                 <li><a href="#"><span class="fa fa-facebook"></span></a></li>
-                 <li><a href="#"><span class="fa fa-twitter"></span></a></li>
-                 <li><a href="#"><span class="fa fa-pinterest"></span></a></li>
-                 <li><a href="#"><span class="fa fa-google-plus"></span></a></li>
-                 <li><a href="#"><span class="fa fa-linkedin"></span></a></li>
-               </ul>
              </div>
             </div>
           </div>

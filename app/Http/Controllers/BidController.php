@@ -45,17 +45,19 @@ if(Auth::check())
     $clicks = 0;
     $auct =Auction::where('id',$request['auction_id'])->get()->first();
 
+if($auct->EndTime > Carbon::now()){
+
     if($all){
 
-      $min =($all->Amount ) + 0.25;
-      $max =ceil(($all->Amount ) +  (($all->Amount ) * 0.2));
+      $min =($all->Amount ) + 1;
+      $max =ceil(($all->Amount ) +  (($all->Amount ) * 0.25));
       $validator = $this->validate($request, [
     
     'bid_coins' => 'required|min:' . $min . '|max:' . $max . '|numeric'
 
 ]);
 
-    if($all->clicks < 2 || $all->users_id != Auth::user()->id){
+    if($all->clicks < 1 || $all->users_id != Auth::user()->id){
 
 
         $activate = true;
@@ -100,28 +102,29 @@ if(Auth::check())
     
          
     }
-}
-    else{
 
-     $auct =Auction::where('id',$request['auction_id'])->get()->first();
-   
-      $min =( $auct->StartingPrice) + 0.25;
-      $max =( $auct->StartingPrice) +  (($auct->StartingPrice) * 0.2);
-      $validator = $this->validate($request, [
-    
-      'bid_coins' => 'required|min:' . $min . '|max:' . $max . '|numeric'
-]);
-        $startPrice = Auction::where('id',$request['auction_id'])->get()->first();
-        $Bids =new Bid();
-        $Bids->Amount =$request['bid_coins'];
-        $Bids->auction_id =$request['auction_id'];
-        $Bids->users_id    =Auth::user()->id;
-        $Bids->Date      =Carbon::now();
-        $Bids->clicks     =1;
-        $Bids->save();
+    if($all->clicks == 1 ){
 
-        session(['bidUserID' => $Bids->users_id]);
+       $request->session()->flash('status','you cannot bid twice a time, wait for another person to bid');
     }  
+    
+
+    }
+
+
+}else if($auct->EndTime < Carbon::now()){
+
+  if($all->users_id ==Auth::user()->id){
+
+    $request->session()->flash('status', 'the auction is over, you are the winner ');
+
+  }
+  else{
+     $request->session()->flash('status', 'Sorry, the auction is over ');
+  }
+  
+}
+    
     
     session(['activate' => $activate]);
 

@@ -70,6 +70,8 @@ class ProductController extends Controller
             $product->Name =$request['name'];
             $product->condition =$request['condition'];
             $product->Description =$request['description'];
+            $product->City =$request['city'];
+
             $con = Input::get('condition') == 'used' ? 'used' : 'new';
             $product->condition = $con;
             $product->Price =$request['price'];
@@ -121,45 +123,35 @@ class ProductController extends Controller
     public function show($id)
     {
         $product = Product::find($id);
+        if(is_null($product)){
+            return view('errors.notfound');
+        }
         $item_photos = ItemPhoto::where('product_id',$product->id)->get();
+        $seller = User::where('id','=',$product->seller_id)->get()->first();
+       
+       $similarPhoto;
+      $similarProducts = Product::where('subcategory_id',$product->subcategory_id)->get();
 
-
-        $case;
-        $AuthCase;
-        $similarPhoto;
-        $similarProducts = Product::where('subcategory_id',$product->subcategory_id)->get();
-
-        // foreach($similarProducts as $similarProduct){
-        //     $similarPhoto = ItemPhoto::where('product_id',$similarProduct->id)->get()->first();
-            
-        //     Session([$similarProduct->id => $similarPhoto->Photos]);
-        // }
-        
-
-    if(($product == null || $product == null) )
-    {
-
-        $case = false;
+     foreach($similarProducts as $similarProduct){
+          $similarPhoto = ItemPhoto::where('product_id',$similarProduct->id)->get()->first();
+          
+          if(!is_null($similarPhoto)){
+            Session([$similarProduct->id => $similarPhoto->Photos]);
+          }
+         
+     }
     
-    }else
-    {
 
-     $case = true ;
-            if( Auth::user()->id == $product->seller_id ){
-                $AuthCase = true ;
-            }else{
-                $AuthCase = false ;
-            }
-                  }
-
+    
 
 
     return view('website.product-detail',[
         'product' => $product,
         'item_photos' => $item_photos,
-         'case' => $case,
-         'authcase' => $AuthCase,
-         'similarProducts' => $similarProducts
+        
+        
+         'similarProducts' => $similarProducts,
+         'seller'=>$seller
          
         ]);
         // return view("website.product-detail" ,compact('product' ,'item_photos'));
